@@ -197,6 +197,7 @@
   .cat-sec-head h2{font-size:clamp(20px,2vw,25px);}
   .cat-sec-head .more{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--terracotta-deep);white-space:nowrap;opacity:0.85;transition:opacity .25s;}
   .cat-sec-head .more:hover{opacity:1;}
+  .more-bottom{display:none;}
   .cat-sec-body{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-items:stretch;}
   .cat-feat{position:relative;display:block;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#53295B,#2A1530);min-height:225px;height:100%;}
   .cat-feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s;}
@@ -214,7 +215,9 @@
 
   /* ══ 3 cơ sở lưu trú ══ */
   .cta h2{margin-bottom:0;}
-  .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:72px;margin:48px auto 0;text-align:left;max-width:1065px;}
+  .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:0;text-align:left;}
+  #o-dau .stay-head h3{color:var(--ink);}
+  #o-dau .stay-card p{color:var(--ink-soft);}
   .stay-card{display:flex;flex-direction:column;align-items:flex-start;}
   .stay-head{display:flex;justify-content:space-between;align-items:center;width:100%;margin:14px 0 4px;gap:10px;}
   .stay-head h3{margin:0;color:#FBF6EC;font-size:19px;}
@@ -248,20 +251,25 @@
     .toc a{flex-shrink:0;border-left:none;border-bottom:2px solid transparent;padding:12px 12px;white-space:nowrap;}
     .toc a.now{border-left:none;border-bottom-color:var(--terracotta);background:none;}
     .tbl{border:none;background:none;overflow:visible;}
-    .tbl table, .tbl tbody, .tbl tr, .tbl td{display:block;min-width:0;width:100%;}
+    .tbl table,.tbl tbody{display:block;min-width:0;width:100%;}
     .tbl thead{display:none;}
-    .tbl tr{background:var(--paper);border:1px solid var(--line-soft);border-radius:10px;margin-bottom:10px;padding:12px 14px;}
-    .tbl td{border:none;padding:5px 0;display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14px;}
-    .tbl td::before{content:attr(data-label);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--brass);flex-shrink:0;}
-    .tbl td:first-child{font-family:'Fraunces',serif;font-size:16.5px;color:var(--ink);padding-bottom:7px;border-bottom:1px dashed var(--line-soft);margin-bottom:4px;display:block;}
-    .tbl td:first-child::before{display:none;}
+    .tbl tr{display:grid;grid-template-columns:1fr auto;gap:1px 14px;align-items:baseline;background:var(--paper);border:1px solid var(--line-soft);border-radius:10px;margin-bottom:8px;padding:10px 13px;}
+    .tbl td{display:block;border:none;padding:0;font-size:13px;min-width:0;width:auto;}
+    .tbl td::before{display:none;}
+    .tbl td:first-child{grid-row:1;grid-column:1;font-family:'Fraunces',serif;font-size:15.5px;color:var(--ink);border-bottom:none;margin-bottom:2px;padding-bottom:0;}
+    .tbl td[data-label="Đọc thêm"]{grid-row:1;grid-column:2;justify-self:end;font-size:12px;white-space:nowrap;}
+    .tbl td[data-label="Giá"],.tbl td[data-label="Vé tham khảo"]{grid-row:2;grid-column:1;}
+    .tbl td[data-label="Nên ăn lúc nào"],.tbl td[data-label="Giờ mở cửa"]{grid-row:2;grid-column:2;text-align:right;font-size:12px;opacity:0.85;}
+    .tbl td[data-label="Nên dành"]{grid-row:3;grid-column:1 / -1;font-size:12px;opacity:0.85;}
+    .tbl td[data-label="Nên dành"]::before{content:'Nên dành · ';display:inline;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass);}
     .tbl tbody tr:hover{background:var(--paper);}
-    .tbl.open tr.extra{display:block;}
+    .tbl.open tr.extra{display:grid;}
     .season-grid{grid-template-columns:1fr 1fr;}
     .cats{padding:36px 11px 0;grid-template-columns:1fr;gap:32px;}
     .guide-title{padding:0 22px;margin-top:58px;}
     .ns-strip{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:28%;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
     .ns-strip::-webkit-scrollbar{display:none;}
+    .ns-cell span{font-size:11px;padding:7px 8px;height:calc(1.4em*4 + 14px);}
     .stay-grid{grid-template-columns:1fr;gap:32px;max-width:420px;}
     .cards{grid-template-columns:1fr;}
     .tips{grid-template-columns:1fr;}
@@ -283,9 +291,10 @@
     .season-grid{grid-template-columns:1fr;gap:12px;}
     /* Mobile: chuyên mục 2 cột như desktop; trong mỗi ô — bài nổi bật trên, 2 bài nhỏ dưới */
     .cats{grid-template-columns:1fr 1fr;gap:26px 28px;}
-    .cat-sec-head{padding-bottom:7px;margin-bottom:10px;gap:8px;}
-    .cat-sec-head h2{font-size:16px;}
-    .cat-sec-head .more{font-size:9px;letter-spacing:0.08em;}
+    .cat-sec-head{padding-bottom:7px;margin-bottom:10px;gap:6px;min-height:30px;align-items:baseline;}
+    .cat-sec-head h2{font-size:17.5px;white-space:nowrap;letter-spacing:0;}
+    .cat-sec-head .more{display:none;}
+    .more-bottom{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta-deep);}
     .cat-sec-body{grid-template-columns:1fr;gap:8px;}
     .cat-feat{min-height:0;height:0;padding-bottom:62.5%;}
     .cat-feat h3{font-size:12.5px;padding:8px 10px;line-height:1.35;}
@@ -307,6 +316,11 @@
     details p{font-size:13.5px;}
   }
   .amp{font-family:Georgia,'Times New Roman',serif;font-size:0.8em;font-weight:400;}
+
+  /* ══ Hiệu ứng trượt nhẹ khi cuộn ══ */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
 </style>
 </head>
 <body>
@@ -371,6 +385,7 @@
       </a>
       </div>
     </div>
+    <a class="more more-bottom" href="nhip-hue.html?cat=am-thuc">Xem tất cả →</a>
   </section>
 
   <section class="cat-sec">
@@ -394,6 +409,7 @@
       </a>
       </div>
     </div>
+    <a class="more more-bottom" href="nhip-hue.html?cat=di-kham-pha">Xem tất cả →</a>
   </section>
 
   <section class="cat-sec">
@@ -417,6 +433,7 @@
       </a>
       </div>
     </div>
+    <a class="more more-bottom" href="nhip-hue.html?cat=van-hoa-di-san">Xem tất cả →</a>
   </section>
 
   <section class="cat-sec">
@@ -440,6 +457,7 @@
       </a>
       </div>
     </div>
+    <a class="more more-bottom" href="nhip-hue.html?cat=mua-le-hoi">Xem tất cả →</a>
   </section>
 
   <section class="cat-sec">
@@ -472,6 +490,7 @@
       <div class="ns-cell"></div>
       <div class="ns-cell"></div>
     </div>
+    <a class="more more-bottom" href="nhip-hue.html?cat=nhip-song">Xem tất cả →</a>
   </section>
 </div>
 
@@ -488,7 +507,7 @@
     <div class="toc-title">Mục lục</div>
     <nav>
       <a href="#mua"><i>01</i>Đi tháng nào</a>
-      <a href="#den-hue"><i>02</i>Đến Huế bằng gì</a>
+      <a href="#o-dau"><i>02</i>Ở đâu khi đến Huế</a>
       <a href="#di-lai"><i>03</i>Đi lại trong Huế</a>
       <a href="#lich-trinh"><i>04</i>Lịch trình 48h</a>
       <a href="#an-gi"><i>05</i>Ăn gì · Giá</a>
@@ -528,28 +547,38 @@
       </div>
     </section>
 
+
     <div class="sep"></div>
 
-    <section class="block" id="den-hue">
-      <div class="sec-head"><div class="seal">02</div><h2>Đến Huế bằng gì?</h2></div>
-      <p class="sub">Ba đường chính — chọn theo điểm xuất phát và túi tiền. Giá mang tính tham khảo.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-head"><div class="gate">✈</div><h4>Máy bay</h4></div>
-          <p>Bay đến sân bay Phú Bài, cách Kinh Thành ~15 km. Từ sân bay về Dainoi: taxi ~250–300k (25 phút) hoặc xe buýt sân bay ~50k/người dừng trung tâm.</p>
-          <span class="price">HN/SG → Huế: từ 800k – 1tr8 khứ hồi</span>
+    <section class="block" id="o-dau">
+      <div class="sec-head"><div class="seal">02</div><h2>Ở đâu khi đến Huế?</h2></div>
+      <p class="sub">Ba chỗ ở cùng hệ thống — chọn theo nhịp chuyến đi của bạn.</p>
+      <div class="stay-grid">
+      <div class="stay-card">
+        <img src="images/dai-noi.jpg" alt="Dainoi Homestay" loading="lazy">
+        <div class="stay-head">
+          <h3>Dainoi Homestay</h3>
+          <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="btn-book">Đặt phòng</a>
         </div>
-        <div class="card">
-          <div class="card-head"><div class="gate">🚆</div><h4>Tàu hỏa</h4></div>
-          <p>Ga Huế nằm ngay trung tâm, cách Dainoi ~3 km. Nếu đi từ Đà Nẵng ra, ngồi toa bên phải — đoạn qua đèo Hải Vân là một trong những cung đường sắt đẹp nhất Việt Nam.</p>
-          <span class="price">Đà Nẵng → Huế: ~100–150k, 2.5–3 giờ</span>
-        </div>
-        <div class="card">
-          <div class="card-head"><div class="gate">🚌</div><h4>Xe khách / Limousine</h4></div>
-          <p>Từ Đà Nẵng có limousine đi cao tốc ~2 giờ, đưa đón tận nơi. Từ Hà Nội/Sài Gòn có xe giường nằm chạy đêm nếu muốn tiết kiệm một đêm khách sạn.</p>
-          <span class="price">Đà Nẵng → Huế: ~180–250k/người</span>
-        </div>
+        <p>63 Ông Ích Khiêm · cách Đại Nội 5 phút đi bộ</p>
       </div>
+      <div class="stay-card">
+        <img src="images/zen-apartment.jpg" alt="Zen Apartment" loading="lazy">
+        <div class="stay-head">
+          <h3>Zen Apartment</h3>
+          <a href="#" class="btn-book">Đặt phòng</a>
+        </div>
+        <p>Nera Garden · gần Aeon Mall Huế</p>
+      </div>
+      <div class="stay-card">
+        <img src="images/hue-heritage.jpg" alt="Hue Heritage" loading="lazy">
+        <div class="stay-head">
+          <h3>Hue Heritage</h3>
+          <a href="#" class="btn-book">Đặt phòng</a>
+        </div>
+        <p>Chung cư cao cấp · cạnh Melia Vinpearl Huế</p>
+      </div>
+    </div>
     </section>
 
     <div class="sep"></div>
@@ -637,23 +666,23 @@
       <div class="sec-head"><div class="seal">05</div><h2>Ăn gì — giá bao nhiêu?</h2></div>
       <p class="sub">Giá đúng của món Huế rẻ hơn bạn nghĩ. Bảng này để bạn khỏi bị "giá khách du lịch".</p>
       <div class="tbl"><table>
-        <thead><tr><th>Món</th><th>Giá thường thấy</th><th>Ăn lúc nào</th><th>Đọc thêm</th></tr></thead>
+        <thead><tr><th>Món</th><th>Giá thường thấy</th><th>Nên ăn lúc nào</th><th>Đọc thêm</th></tr></thead>
         <tbody>
-          <tr><td data-label="Món">Bún bò Huế</td><td class="p" data-label="Giá">30.000 – 45.000đ</td><td data-label="Ăn lúc nào">Sáng sớm, trước 9h</td><td data-label="Đọc thêm"><a href="am-thuc/bun-bo-hue/bun-bo-hue.html" target="_blank" rel="noopener">Bài viết</a></td></tr>
-          <tr><td data-label="Món">Chè Huế (1 chén)</td><td class="p" data-label="Giá">10.000 – 20.000đ</td><td data-label="Ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm"><a href="am-thuc/che-hue/che-hue.html" target="_blank" rel="noopener">Bài viết</a></td></tr>
-          <tr><td data-label="Món">Bánh bèo – nậm – lọc (phần)</td><td class="p" data-label="Giá">25.000 – 40.000đ</td><td data-label="Ăn lúc nào">Chiều, tối nhẹ</td><td data-label="Đọc thêm"><a href="am-thuc/beo-nam-loc/beo-nam-loc.html" target="_blank" rel="noopener">Bài viết</a></td></tr>
-          <tr><td data-label="Món">Cơm hến / bún hến</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Ăn lúc nào">Sáng, trưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Bánh canh</td><td class="p" data-label="Giá">20.000 – 35.000đ</td><td data-label="Ăn lúc nào">Chiều mưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Cà phê quán cũ</td><td class="p" data-label="Giá">15.000 – 30.000đ</td><td data-label="Ăn lúc nào">Cả ngày</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Bánh khoái</td><td class="p" data-label="Giá">30.000 – 50.000đ</td><td data-label="Ăn lúc nào">Chiều, tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Nem lụi (phần)</td><td class="p" data-label="Giá">35.000 – 60.000đ</td><td data-label="Ăn lúc nào">Tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bún thịt nướng / bánh ướt thịt nướng</td><td class="p" data-label="Giá">25.000 – 35.000đ</td><td data-label="Ăn lúc nào">Trưa, chiều</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bánh ép (món giới trẻ Huế)</td><td class="p" data-label="Giá">3.000 – 5.000đ/cái</td><td data-label="Ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bún mắm nêm</td><td class="p" data-label="Giá">20.000 – 30.000đ</td><td data-label="Ăn lúc nào">Trưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Cơm âm phủ</td><td class="p" data-label="Giá">35.000 – 55.000đ</td><td data-label="Ăn lúc nào">Trưa, tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Cơm chay Huế (gần chùa)</td><td class="p" data-label="Giá">20.000 – 40.000đ</td><td data-label="Ăn lúc nào">Trưa, ngày rằm</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bánh mì Huế</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Ăn lúc nào">Sáng, khuya</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Mè xửng, tôm chua (mua làm quà)</td><td class="p" data-label="Giá">30.000 – 80.000đ</td><td data-label="Ăn lúc nào">Mua ở chợ Đông Ba buổi sáng</td><td data-label="Đọc thêm">—</td></tr>
+          <tr><td data-label="Món">Bún bò Huế</td><td class="p" data-label="Giá">30.000 – 45.000đ</td><td data-label="Nên ăn lúc nào">Sáng sớm, trước 9h</td><td data-label="Đọc thêm"><a href="am-thuc/bun-bo-hue/bun-bo-hue.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
+          <tr><td data-label="Món">Chè Huế (1 chén)</td><td class="p" data-label="Giá">10.000 – 20.000đ</td><td data-label="Nên ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm"><a href="am-thuc/che-hue/che-hue.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
+          <tr><td data-label="Món">Bánh bèo – nậm – lọc (phần)</td><td class="p" data-label="Giá">25.000 – 40.000đ</td><td data-label="Nên ăn lúc nào">Chiều, tối nhẹ</td><td data-label="Đọc thêm"><a href="am-thuc/beo-nam-loc/beo-nam-loc.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
+          <tr><td data-label="Món">Cơm hến / bún hến</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Nên ăn lúc nào">Sáng, trưa</td><td data-label="Đọc thêm">—</td></tr>
+          <tr><td data-label="Món">Bánh canh</td><td class="p" data-label="Giá">20.000 – 35.000đ</td><td data-label="Nên ăn lúc nào">Chiều mưa</td><td data-label="Đọc thêm">—</td></tr>
+          <tr><td data-label="Món">Cà phê quán cũ</td><td class="p" data-label="Giá">15.000 – 30.000đ</td><td data-label="Nên ăn lúc nào">Cả ngày</td><td data-label="Đọc thêm">—</td></tr>
+          <tr><td data-label="Món">Bánh khoái</td><td class="p" data-label="Giá">30.000 – 50.000đ</td><td data-label="Nên ăn lúc nào">Chiều, tối</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Nem lụi (phần)</td><td class="p" data-label="Giá">35.000 – 60.000đ</td><td data-label="Nên ăn lúc nào">Tối</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Bún thịt nướng / bánh ướt thịt nướng</td><td class="p" data-label="Giá">25.000 – 35.000đ</td><td data-label="Nên ăn lúc nào">Trưa, chiều</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Bánh ép (món giới trẻ Huế)</td><td class="p" data-label="Giá">3.000 – 5.000đ/cái</td><td data-label="Nên ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Bún mắm nêm</td><td class="p" data-label="Giá">20.000 – 30.000đ</td><td data-label="Nên ăn lúc nào">Trưa</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Cơm âm phủ</td><td class="p" data-label="Giá">35.000 – 55.000đ</td><td data-label="Nên ăn lúc nào">Trưa, tối</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Cơm chay Huế (gần chùa)</td><td class="p" data-label="Giá">20.000 – 40.000đ</td><td data-label="Nên ăn lúc nào">Trưa, ngày rằm</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Bánh mì Huế</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Nên ăn lúc nào">Sáng, khuya</td><td data-label="Đọc thêm">—</td></tr>
+          <tr class="extra"><td data-label="Món">Mè xửng, tôm chua (mua làm quà)</td><td class="p" data-label="Giá">30.000 – 80.000đ</td><td data-label="Nên ăn lúc nào">Mua ở chợ Đông Ba buổi sáng</td><td data-label="Đọc thêm">—</td></tr>
         </tbody>
       </table></div>
       <button class="more-btn" data-more="Xem thêm 8 món ›" data-less="Thu gọn ‹">Xem thêm 8 món ›</button>
@@ -726,38 +755,6 @@
 </div>
 
 <!-- CTA -->
-<section class="cta">
-  <div class="lattice"></div>
-  <div class="wrap2" style="max-width:1160px;">
-    <h2>Ở đâu khi đến Huế?</h2>
-    <div class="stay-grid">
-      <div class="stay-card">
-        <img src="images/dai-noi.jpg" alt="Dainoi Homestay" loading="lazy">
-        <div class="stay-head">
-          <h3>Dainoi Homestay</h3>
-          <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>63 Ông Ích Khiêm · cách Đại Nội 5 phút đi bộ</p>
-      </div>
-      <div class="stay-card">
-        <img src="images/zen-apartment.jpg" alt="Zen Apartment" loading="lazy">
-        <div class="stay-head">
-          <h3>Zen Apartment</h3>
-          <a href="#" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>Nera Garden · gần Aeon Mall Huế</p>
-      </div>
-      <div class="stay-card">
-        <img src="images/hue-heritage.jpg" alt="Hue Heritage" loading="lazy">
-        <div class="stay-head">
-          <h3>Hue Heritage</h3>
-          <a href="#" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>Chung cư cao cấp · cạnh Melia Vinpearl Huế</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="foot-grid">
@@ -841,6 +838,19 @@
     spy();
   }, { passive: true });
   window.addEventListener('resize', sync);
+
+  /* Trượt nhẹ nội dung khi cuộn tới (bỏ qua nếu người dùng tắt chuyển động) */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const targets = [...document.querySelectorAll('.cat-sec, .guide-title, section.block, .cta h2, .stay-card')];
+    targets.forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.stay-card').forEach((el, i) => el.style.transitionDelay = (i * 160) + 'ms');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
+    targets.forEach(el => io.observe(el));
+  }
 </script>
 </body>
 </html>
