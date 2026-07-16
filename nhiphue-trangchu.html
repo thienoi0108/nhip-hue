@@ -71,6 +71,12 @@
   .arch::before{content:'';position:absolute;inset:12px;border:1px solid rgba(231,207,169,0.25);border-radius:98px 98px 4px 4px;}
   .arch span{font-family:'Fraunces',serif;font-style:italic;font-size:14.5px;line-height:1.85;color:rgba(251,246,236,0.75);text-align:center;text-wrap:balance;}
 
+  /* ══ Dự phòng cho trình duyệt cũ không hỗ trợ aspect-ratio (iOS < 15) ══ */
+  @supports not (aspect-ratio: 1 / 1){
+    .cat-feat{height:0;padding-bottom:62.5%;min-height:0;}
+    .ns-cell{height:0;padding-bottom:178%;}
+  }
+
   /* ══ Nhịp sống: dải ô dọc trải ngang ══ */
   .cat-sec:last-child{grid-column:1/-1;}
   .ns-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;}
