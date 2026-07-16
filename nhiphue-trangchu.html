@@ -31,7 +31,7 @@
   /* ══ HEADER (chuẩn site) ══ */
   header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(246,241,232,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft);height:var(--header-h);display:flex;align-items:center;transform:translateY(0);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .3s;}
   header.nav-hidden{transform:translateY(-100%);}header.shadowed{box-shadow:0 2px 20px rgba(30,24,18,0.08);}
-  nav.topnav{width:100%;max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+  nav.topnav{width:100%;max-width:1460px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
   .logo-mark{font-family:'Fraunces',serif;font-size:29px;letter-spacing:0.14em;font-weight:500;display:flex;align-items:center;gap:14px;}
   .logo-mark img{width:68px;height:68px;}
   .navlinks{display:flex;gap:30px;font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;}
@@ -78,14 +78,14 @@
   .ns-cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s;}
   .ns-cell:hover img{transform:scale(1.05);}
   a.ns-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,25,0) 40%,rgba(20,10,25,0.8));}
-  .ns-cell span{position:absolute;z-index:2;left:0;right:0;bottom:0;height:calc(1.4em*4 + 20px);padding:10px 11px;color:#FBF6EC;font-family:'Fraunces',serif;font-size:12.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+  .ns-cell span{position:absolute;z-index:2;left:0;right:0;bottom:0;height:calc(1.4em*4 + 20px);padding:10px 11px;color:#FBF6EC;font-family:'Fraunces',serif;font-size:17px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
 
   /* ══ Tiêu đề cẩm nang ══ */
-  .guide-title{max-width:1240px;margin:76px auto 0;padding:0 24px;}
+  .guide-title{max-width:1460px;margin:76px auto 0;padding:0 12px;}
   .guide-title h2{font-size:clamp(27px,3vw,36px);border-bottom:1px solid var(--terracotta);padding-bottom:11px;}
 
   /* ══ BỐ CỤC SỔ TAY: mục lục dọc + nội dung ══ */
-  .guide{max-width:1240px;margin:0 auto;padding:36px 48px 28px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;align-items:start;}
+  .guide{max-width:1460px;margin:0 auto;padding:36px 24px 28px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;align-items:start;}
   /* Chặn grid blowout: phần tử con không được banh rộng khung */
   .guide > *{min-width:0;}
 
@@ -121,12 +121,14 @@
 
   /* ══ Thẻ di chuyển — icon trong khung cửa vòm ══ */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .card{background:var(--paper);border:1px solid var(--line-soft);padding:24px 22px;border-radius:12px;transition:transform .25s,box-shadow .25s;}
+  .card{background:var(--paper);border:1px solid var(--line-soft);padding:24px 22px;border-radius:12px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
   .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(30,24,18,0.08);}
-  .gate{width:52px;height:62px;border:1.5px solid var(--terracotta);border-radius:26px 26px 5px 5px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;background:var(--cream);}
+  .card-head{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+  .gate{width:52px;height:62px;border:1.5px solid var(--terracotta);border-radius:26px 26px 5px 5px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--cream);flex-shrink:0;}
+  .card .card-head h4{margin-bottom:0;}
   .card h4{font-size:17.5px;margin-bottom:9px;}
   .card p{font-size:14px;line-height:1.8;color:var(--ink-soft);}
-  .card .price{display:block;margin-top:12px;font-size:12.5px;color:var(--terracotta-deep);letter-spacing:0.04em;border-top:1px dashed rgba(83,41,91,0.3);padding-top:10px;}
+  .card .price{display:block;margin-top:auto;padding-top:10px;font-size:12.5px;color:var(--terracotta-deep);letter-spacing:0.04em;border-top:1px dashed rgba(83,41,91,0.3);padding-top:10px;}
 
   /* ══ Lịch trình — dòng thời gian như dòng sông ══ */
   .day{margin-bottom:28px;}
@@ -141,6 +143,13 @@
   .slot p{font-size:14.5px;line-height:1.75;color:var(--ink-soft);}
   .slot a{color:var(--terracotta-deep);border-bottom:1px solid rgba(83,41,91,0.35);}
   .slot a:hover{border-color:var(--terracotta);}
+
+  /* ══ Lịch trình 48h: 2 ngày chia 2 cột (desktop) ══ */
+  @media(min-width:981px){
+    #lich-trinh{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;align-items:start;}
+    #lich-trinh .sec-head,#lich-trinh .sub{grid-column:1/-1;}
+    #lich-trinh .day{margin-bottom:0;}
+  }
 
   /* ══ Bảng — băng đầu kiểu ấn triện ══ */
   .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line-soft);border-radius:12px;background:var(--paper);}
@@ -176,13 +185,13 @@
 
   /* ══ CTA + footer ══ */
   .cta{background:var(--ink);color:#FBF6EC;padding:80px 0;text-align:center;position:relative;overflow:hidden;}
-  .cta .wrap2{max-width:800px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+  .cta .wrap2{max-width:800px;margin:0 auto;padding:0 16px;position:relative;z-index:1;}
   .cta h2{font-size:clamp(26px,3.2vw,38px);margin:16px 0 10px;}
   .cta p{color:rgba(251,246,236,0.65);font-size:15px;margin-bottom:30px;}
   .btn-book{background:var(--terracotta);color:#FBF6EC;border:1px solid var(--terracotta);padding:15px 38px;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;display:inline-block;transition:all .35s;}
   .btn-book:hover{background:var(--terracotta-deep);}
   /* ══ Chuyên mục ══ */
-  .cats{max-width:1240px;margin:0 auto;padding:44px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:40px 72px;}
+  .cats{max-width:1460px;margin:0 auto;padding:44px 12px 0;display:grid;grid-template-columns:1fr 1fr;gap:40px 72px;}
   .cat-sec{min-width:0;}
   .cat-sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--terracotta);padding-bottom:9px;margin-bottom:16px;}
   .cat-sec-head h2{font-size:clamp(20px,2vw,25px);}
@@ -200,7 +209,7 @@
   .cat-item .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
   .cat-item:hover .thumb img{transform:scale(1.05);}
   .cat-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,25,0.05) 30%,rgba(20,10,25,0.85));}
-  .cat-item .t{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:9px 12px;color:#FBF6EC;font-family:'Fraunces',serif;font-size:13px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .cat-item .t{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:9px 12px;color:#FBF6EC;font-family:'Fraunces',serif;font-size:17px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 
 
   /* ══ 3 cơ sở lưu trú ══ */
@@ -330,7 +339,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
+  <div class="wrap" style="max-width:1460px;margin:0 auto;padding:0 24px;">
     <div>
       <span class="eyebrow">Nhịp Huế · Cẩm nang</span>
       <h1>Lần đầu <em>đến Huế?</em></h1>
@@ -526,20 +535,17 @@
       <p class="sub">Ba đường chính — chọn theo điểm xuất phát và túi tiền. Giá mang tính tham khảo.</p>
       <div class="cards">
         <div class="card">
-          <div class="gate">✈</div>
-          <h4>Máy bay</h4>
+          <div class="card-head"><div class="gate">✈</div><h4>Máy bay</h4></div>
           <p>Bay đến sân bay Phú Bài, cách Kinh Thành ~15 km. Từ sân bay về Dainoi: taxi ~250–300k (25 phút) hoặc xe buýt sân bay ~50k/người dừng trung tâm.</p>
           <span class="price">HN/SG → Huế: từ 800k – 1tr8 khứ hồi</span>
         </div>
         <div class="card">
-          <div class="gate">🚆</div>
-          <h4>Tàu hỏa</h4>
+          <div class="card-head"><div class="gate">🚆</div><h4>Tàu hỏa</h4></div>
           <p>Ga Huế nằm ngay trung tâm, cách Dainoi ~3 km. Nếu đi từ Đà Nẵng ra, ngồi toa bên phải — đoạn qua đèo Hải Vân là một trong những cung đường sắt đẹp nhất Việt Nam.</p>
           <span class="price">Đà Nẵng → Huế: ~100–150k, 2.5–3 giờ</span>
         </div>
         <div class="card">
-          <div class="gate">🚌</div>
-          <h4>Xe khách / Limousine</h4>
+          <div class="card-head"><div class="gate">🚌</div><h4>Xe khách / Limousine</h4></div>
           <p>Từ Đà Nẵng có limousine đi cao tốc ~2 giờ, đưa đón tận nơi. Từ Hà Nội/Sài Gòn có xe giường nằm chạy đêm nếu muốn tiết kiệm một đêm khách sạn.</p>
           <span class="price">Đà Nẵng → Huế: ~180–250k/người</span>
         </div>
@@ -553,20 +559,17 @@
       <p class="sub">Huế nhỏ và phẳng — trung tâm gói gọn trong bán kính 5 km. Đây là lợi thế lớn nhất của nó.</p>
       <div class="cards">
         <div class="card">
-          <div class="gate">🛵</div>
-          <h4>Xe máy — nên nhất</h4>
+          <div class="card-head"><div class="gate">🛵</div><h4>Xe máy — nên nhất</h4></div>
           <p>Tự do nhất để ra Phá Tam Giang, lăng Tự Đức, làng hoa giấy Thanh Tiên. <strong style="font-weight:500;color:var(--terracotta-deep);">Bạn có thể thuê xe máy ngay tại Dainoi Homestay — 150.000đ cho 24 tiếng</strong>, lễ tân giao xe tận nơi và chỉ luôn đường ít người đi.</p>
           <span class="price" style="font-weight:500;">Thuê tại Dainoi: 150.000đ / 24 tiếng · đổ đầy bình ~50k</span>
         </div>
         <div class="card">
-          <div class="gate">🚶</div>
-          <h4>Đi bộ trong Kinh Thành</h4>
+          <div class="card-head"><div class="gate">🚶</div><h4>Đi bộ trong Kinh Thành</h4></div>
           <p>Dainoi ở 63 Ông Ích Khiêm — ngay trong Kinh Thành. Đại Nội, hào thành, hàng quán buổi sáng đều trong tầm 10–20 phút đi bộ. Sáng sớm là khung giờ đẹp nhất.</p>
           <span class="price">0 đồng — và đáng giá nhất</span>
         </div>
         <div class="card">
-          <div class="gate">🛺</div>
-          <h4>Taxi / Xích lô</h4>
+          <div class="card-head"><div class="gate">🛺</div><h4>Taxi / Xích lô</h4></div>
           <p>Taxi và xe công nghệ đầy đủ, phù hợp buổi tối hoặc trời mưa. Xích lô quanh Kinh Thành là trải nghiệm chậm rãi đúng chất Huế — thỏa thuận giá trước khi lên.</p>
           <span class="price">Xích lô ~100–150k/giờ</span>
         </div>
