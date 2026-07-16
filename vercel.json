@@ -1,0 +1,6 @@
+{
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/", "destination": "/nhiphue-trangchu.html", "permanent": false }
+  ]
+}

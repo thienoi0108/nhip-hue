@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhịp Huế — Cẩm nang du lịch Cố Đô · Dainoi</title>
+<meta name="description" content="Ẩm thực, văn hoá, di sản và những điều ít người kể về Huế — từ góc nhìn của người sống trong lòng Kinh Thành.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap');
+
+  :root{
+    --cream:#F6F1E8;
+    --cream-2:#EFE7D8;
+    --ink:#1E1812;
+    --ink-soft:#3A3128;
+    --terracotta:#53295B;
+    --terracotta-deep:#3B1C42;
+    --brass:#AC8A52;
+    --moss:#41492F;
+    --line:rgba(30,24,18,0.14);
+    --line-soft:rgba(30,24,18,0.08);
+    --paper:#FBF8F2;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:400;letter-spacing:0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 48px;}
+
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--terracotta-deep);
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--terracotta-deep);display:inline-block;}
+
+  /* ===== TOPBAR ===== */
+  .topbar{
+    background:var(--ink);
+    color:var(--cream-2);
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 48px;}
+  .topbar .tb-right{display:flex;gap:24px;opacity:0.85;}
+  .topbar a{color:inherit;transition:opacity .2s;}
+  .topbar a:hover{opacity:1;}
+
+  /* ===== HEADER ===== */
+  #site-top{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transform:translateY(0);
+    transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .3s;
+  }
+  #site-top.nav-hidden{transform:translateY(-100%);}
+  #site-top.shadowed{box-shadow:0 2px 20px rgba(30,24,18,0.08);}
+  header{
+    background:rgba(246,241,232,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:5px 48px;
+  }
+  .logo-mark{
+    font-family:'Fraunces',serif;font-size:29px;
+    letter-spacing:0.14em;font-weight:500;
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo-mark img{width:68px;height:68px;}
+  .navlinks{
+    display:flex;gap:42px;
+    font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;
+  }
+  .navlinks a{
+    position:relative;padding:4px 0;opacity:0.82;transition:opacity .25s;
+  }
+  .navlinks a:hover{opacity:1;}
+  .navlinks a.active{opacity:1;}
+  .navlinks a::after{
+    content:'';position:absolute;left:0;bottom:-3px;
+    width:0;height:1px;background:var(--terracotta);transition:width .3s;
+  }
+  .navlinks a:hover::after,.navlinks a.active::after{width:100%;}
+  .navlinks .cat-btn{padding:6px 0;font-size:13.7px;letter-spacing:0.06em;opacity:0.82;margin-bottom:0;border-bottom:2px solid transparent;}
+  .navlinks .cat-btn::after{display:none;}
+  .navlinks .cat-btn:hover{opacity:1;}
+  .navlinks .cat-btn.active{opacity:1;}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .nav-cta{
+    border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:12px 27px;
+    font-size:12.6px;letter-spacing:0.1em;text-transform:uppercase;
+    transition:all .3s;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--terracotta-deep);border-color:var(--terracotta-deep);}
+  .hamburger{
+    display:none;flex-direction:column;justify-content:center;
+    gap:5px;width:34px;height:34px;cursor:pointer;
+    background:none;border:none;padding:4px;
+  }
+  .hamburger span{display:block;width:100%;height:1px;background:var(--ink);transition:all .3s;}
+  .hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+  .mobile-nav{
+    display:none;position:fixed;inset:0;
+    background:var(--cream);z-index:99;
+    flex-direction:column;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .35s;
+  }
+  .mobile-nav.open{opacity:1;pointer-events:auto;}
+  .mobile-nav a{
+    font-family:'Fraunces',serif;font-size:32px;
+    padding:16px 0;border-bottom:1px solid var(--line-soft);
+    width:280px;text-align:center;transition:color .25s;
+  }
+  .mobile-nav a:first-child{border-top:1px solid var(--line-soft);}
+  .mobile-nav a:hover{color:var(--terracotta);}
+  .mobile-nav .mobile-cta{
+    margin-top:28px;background:var(--terracotta);color:#FBF6EC;
+    font-family:'Jost',sans-serif;font-size:13px;letter-spacing:0.12em;
+    text-transform:uppercase;padding:14px 38px;width:280px;text-align:center;
+  }
+
+  /* ══ Hoa văn lam song cửa (dấu ấn Huế) ══ */
+  .lattice{position:absolute;inset:0;pointer-events:none;opacity:0.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23E7CFA9' stroke-opacity='0.10'%3E%3Crect x='4' y='4' width='48' height='48'/%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3Cpath d='M28 4v10M28 42v10M4 28h10M42 28h10'/%3E%3C/g%3E%3C/svg%3E");}
+
+  /* ══ Khung tranh đồng bên trong ảnh nổi bật ══ */
+  .post-featured::after{content:'';position:absolute;inset:14px;border:1px solid rgba(231,207,169,0.35);pointer-events:none;z-index:2;}
+
+  /* ══ Ngày tháng kiểu chữ nghiêng cổ điển ══ */
+  .post-list-meta .date{font-family:'Fraunces',serif;font-style:italic;letter-spacing:0.06em;color:var(--brass);text-transform:none;}
+  .feat-meta span{font-family:'Fraunces',serif;font-style:italic;letter-spacing:0.06em;text-transform:none;}
+
+  /* ══ Đoạn trích căn đều 2 bên + phản hồi chạm trên mobile ══ */
+  .post-list-excerpt{text-align:justify;}
+  .post-list-item:active{background:rgba(83,41,91,0.08);}
+
+  /* ===== BLOG HERO ===== */
+  .blog-hero{
+    background:url("logo/nhiphue-cover.PNG") center/cover no-repeat;
+    padding:0;
+    aspect-ratio:1942/809;
+    position:relative;
+    overflow:hidden;
+  }
+  .blog-hero::before{
+    content:'';
+    position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--brass),transparent);
+  }
+
+  .blog-hero .wrap{position:relative;z-index:1;}
+  .blog-hero .eyebrow{color:#E7CFA9;}
+  .blog-hero .eyebrow::before{background:#E7CFA9;}
+  .blog-hero h1{
+    font-size:clamp(48px,7vw,96px);
+    color:#FBF6EC;
+    line-height:1;
+    margin-top:20px;
+    letter-spacing:-0.01em;
+  }
+  .blog-hero h1 em{
+    font-style:italic;font-weight:300;color:#E7CFA9;
+  }
+  .blog-hero-sub{
+    margin-top:20px;
+    font-size:16px;line-height:1.75;
+    color:rgba(251,246,236,0.62);
+    max-width:520px;
+  }
+
+  /* ===== CATEGORY FILTER ===== */
+  .cat-bar{
+    background:rgba(246,241,232,0.97);
+    backdrop-filter:blur(10px);
+    position:sticky;top:0;z-index:90;
+    transition:top .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .cat-bar .wrap{
+    display:flex;gap:0;overflow-x:auto;
+    scrollbar-width:none;
+    justify-content:center;
+  }
+  .cat-bar .wrap::-webkit-scrollbar{display:none;}
+  .cat-btn{
+    flex-shrink:0;
+    padding:18px 28px;
+    font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--ink-soft);opacity:0.55;
+    cursor:pointer;
+    border:none;background:none;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+    transition:opacity .25s,border-color .25s,color .25s;
+    font-family:'Jost',sans-serif;
+    white-space:nowrap;
+  }
+  .cat-btn{position:relative;}
+  .cat-btn:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1.8px;height:46%;border-radius:1px;background:radial-gradient(ellipse at center,var(--terracotta) 0%,rgba(83,41,91,0.75) 38%,transparent 74%);}
+  .cat-btn:hover{opacity:0.85;}
+  .cat-btn.active{
+    opacity:1;color:var(--terracotta-deep);
+    border-bottom-color:var(--terracotta);
+  }
+
+  /* ===== BLOG SECTION ===== */
+  .blog-section{
+    padding:0;
+  }
+  /* Vùng danh sách bài: lề trái 0%, lề phải 2%, bỏ giới hạn bề rộng */
+  .blog-section .wrap,.cat-bar .wrap{max-width:none;padding-left:0;padding-right:2%;}
+
+  /* Main layout: featured left + list right — 50/50 cho mọi chuyên mục */
+  .blog-layout{
+    display:grid;
+    grid-template-columns:50fr 50fr;
+    /* không dùng overflow:hidden ở đây — sẽ làm hỏng sticky của bài nổi bật */
+  }
+
+  /* LEFT: Featured card */
+  .post-featured{
+    /* Vừa khớp 1 màn hình (trừ thanh chuyên mục sticky ~54px) và ghim khi cuộn danh sách */
+    position:sticky;
+    top:54px;
+    align-self:start;
+    height:calc(100vh - 54px);
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .post-featured .feat-link{
+    display:block;
+    width:100%;height:100%;
+    position:absolute;inset:0;
+  }
+  .post-featured img{
+    width:100%;height:100%;
+    object-fit:cover;
+    position:absolute;inset:0;
+    transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+  }
+  .post-featured:hover img{transform:scale(1.04);}
+  .post-featured .feat-overlay{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:48px 52px;
+    background:linear-gradient(to top,rgba(18,12,6,0.9) 0%,rgba(18,12,6,0.4) 60%,transparent 100%);
+    z-index:1;
+    pointer-events:none;
+  }
+  .feat-meta{
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:16px;
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+    color:rgba(251,246,236,0.72);font-weight:500;
+  }
+  .feat-meta .dot{
+    width:3px;height:3px;border-radius:50%;
+    background:rgba(251,246,236,0.45);flex-shrink:0;
+  }
+  .feat-title{
+    font-family:'Fraunces',serif;font-size:clamp(22px,2.4vw,34px);
+    font-weight:400;color:#FBF6EC;
+    line-height:1.25;letter-spacing:-0.01em;
+  }
+
+  /* RIGHT: Article list */
+  .post-list{
+    display:flex;flex-direction:column;
+    border-left:none;
+  }
+  .post-list-item{
+    display:grid;
+    grid-template-columns:1fr 308px;
+    gap:20px;align-items:start;
+    padding:32px 0 32px 40px;
+    border-bottom:none;
+    text-decoration:none;color:inherit;
+    transition:background .2s;
+  }
+  .post-list-item:last-child{border-bottom:none;flex:1;}
+  .post-list-item:hover{background:rgba(83,41,91,0.1);}
+  .post-list-meta{
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:12px;
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--terracotta);font-weight:500;
+  }
+  .post-list-meta .dot{
+    width:3px;height:3px;border-radius:50%;
+    background:var(--line);flex-shrink:0;
+  }
+  .post-list-meta .date{
+    color:var(--ink-soft);opacity:0.55;
+    font-weight:300;letter-spacing:0.04em;text-transform:none;
+  }
+  .post-list-title{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(18px,1.6vw,23px);
+    line-height:1.3;color:var(--ink);
+    margin-bottom:10px;
+    transition:color .25s;
+  }
+  .post-list-item:hover .post-list-title{color:var(--terracotta-deep);}
+  .post-list-excerpt{
+    font-size:13.5px;line-height:1.8;
+    color:var(--ink-soft);opacity:0.7;
+  }
+  .post-list-thumb{background:#D8D2C7;
+    width:308px;height:209px;
+    overflow:hidden;flex-shrink:0;align-self:start;border-radius:10px;
+  }
+  .post-list-thumb img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 1s cubic-bezier(.2,.7,.2,1);
+  }
+  .post-list-item:hover .post-list-thumb img{transform:scale(1.05);}
+
+  /* Layout when featured is hidden (fallback) */
+  .blog-layout.no-featured{
+    grid-template-columns:1fr;
+  }
+  .blog-layout.no-featured .post-list{
+    border-left:none;
+  }
+  .blog-layout.no-featured .post-list-item{
+    grid-template-columns:1fr 396px;
+    padding:36px 48px;
+  }
+  .blog-layout.no-featured .post-list-thumb{
+    width:396px;height:264px;
+  }
+
+  /* Empty state */
+  .empty-cat{
+    padding:80px 40px;
+    text-align:center;
+    color:var(--ink-soft);opacity:0.45;
+    grid-column:1/-1;
+  }
+  .empty-cat p{font-size:15px;margin-top:12px;}
+
+  /* ===== CTA ===== */
+  .blog-cta{
+    background:var(--ink);
+    padding:90px 0;
+    text-align:center;
+    position:relative;
+  }
+  .blog-cta .eyebrow{color:#E7CFA9;}
+  .blog-cta .eyebrow::before{background:#E7CFA9;}
+  .blog-cta h2{
+    color:#FBF6EC;font-size:clamp(28px,3.6vw,42px);
+    margin:20px 0 12px;line-height:1.3;
+    margin-left:auto;margin-right:auto;
+  }
+  .blog-cta p{
+    color:rgba(251,246,236,0.55);font-size:15px;
+    margin-bottom:36px;
+  }
+  .btn-book{
+    background:var(--terracotta);color:#FBF6EC;
+    padding:16px 40px;font-size:12.5px;letter-spacing:0.14em;
+    text-transform:uppercase;border:1px solid var(--terracotta);
+    display:inline-block;transition:all .35s;
+  }
+  .stay-card .btn-book{padding:6px 14px;font-size:10.5px;white-space:nowrap;}
+  .stay-card p{margin:0;}
+  .btn-book:hover{background:transparent;color:#FBF6EC;border-color:rgba(231,207,169,0.6);}
+
+  /* ===== 3 CƠ SỞ LƯU TRÚ ===== */
+  .stay-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:72px;
+    margin:48px auto 0;text-align:left;max-width:1065px;
+  }
+  .stay-card{display:flex;flex-direction:column;align-items:flex-start;}
+  .stay-head{display:flex;justify-content:space-between;align-items:center;width:100%;margin:14px 0 4px;gap:10px;}
+  .stay-head h3{margin:0;}
+  .stay-card img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px;}
+  .stay-card h3{color:#FBF6EC;font-size:19px;}
+  .stay-card p{color:rgba(251,246,236,0.55);font-size:14px;line-height:1.6;margin:0;}
+  @media(max-width:640px){
+    .stay-grid{grid-template-columns:1fr;gap:26px;margin-top:40px;max-width:300px;}
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:#4B3454;color:rgba(251,246,236,0.78);padding:20px 0 0;
+  }
+  .foot-grid{
+    display:flex;justify-content:center;
+    padding-bottom:14px;border-bottom:1px solid rgba(251,246,236,0.12);
+  }
+  .foot-brand{display:flex;flex-direction:column;align-items:center;}
+  .foot-brand .logo-mark{color:#FBF6EC;margin-bottom:0;}
+  .foot-brand .logo-mark img{width:75px;height:75px;}
+  .foot-brand p{font-size:14px;line-height:1.8;color:rgba(251,246,236,0.55);max-width:280px;}
+  .foot-col h4{
+    font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    color:#E7CFA9;margin-bottom:22px;font-weight:500;font-family:'Jost',sans-serif;
+  }
+  .foot-col a{display:block;font-size:14px;line-height:2.4;color:rgba(251,246,236,0.62);transition:color .25s;}
+  .foot-col a:hover{color:#FBF6EC;}
+  .foot-bottom{
+    display:flex;justify-content:center;align-items:center;
+    padding:12px 0;font-size:12.5px;color:rgba(251,246,236,0.42);letter-spacing:0.03em;
+  }
+  .foot-social{display:flex;gap:22px;}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:980px){
+    .wrap{padding:0 26px;}
+    nav.wrap{padding:5px 26px;}
+    .navlinks{display:none;}
+    .hamburger{display:flex;}
+    .mobile-nav{display:flex;}
+
+    .blog-hero{padding:0;}
+    .blog-hero::after{display:none;}
+
+    .blog-section{padding:0;}
+
+    .blog-layout{
+      grid-template-columns:1fr !important;
+    }
+    .post-featured{position:relative;top:auto;height:auto;min-height:360px;}
+    .post-featured .feat-overlay{padding:32px 28px;}
+    .post-list{border-left:none;border-top:none;}
+    .post-list-item{
+      grid-template-columns:1fr 120px;
+      padding:26px 28px;
+    }
+    .post-list-thumb{width:120px;height:82px;}
+
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px;}
+    nav.wrap{padding:4px 20px;}
+    .topbar .wrap{padding:9px 20px;}
+    .logo-mark{font-size:21px;gap:10px;}
+    .logo-mark img{width:68px;height:68px;}
+    .nav-cta{display:none;}
+
+    /* Mobile: thanh chuyên mục giống bài viết — 5 mục chia đều 1 hàng, chữ được xuống dòng */
+    .cat-bar{border-bottom:1px solid var(--line);}
+    .cat-bar .wrap{justify-content:stretch;padding:0;overflow:visible;}
+    .cat-btn{flex:1 1 0;min-width:0;height:46px;padding:4px 4px;margin-bottom:0;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      font-size:12.5px;letter-spacing:0.08em;line-height:1.35;white-space:normal;
+      border-bottom:none;}
+    .cat-btn.active{color:var(--terracotta);background:rgba(83,41,91,0.04);font-weight:500;border-bottom:none;}
+
+    .post-featured{position:relative;top:auto;height:auto;min-height:280px;}
+    .post-featured .feat-overlay{padding:24px 22px;}
+    .feat-title{font-size:20px;}
+
+    .post-list-item{
+      grid-template-columns:1fr;
+      padding:22px 20px;
+      gap:14px;
+    }
+    .post-list-thumb{width:100%;height:180px;}
+
+    .foot-bottom{flex-direction:column;gap:14px;text-align:center;padding:26px 0;}
+  }
+
+  /* Social icons in footer */
+  .foot-soc-icons{display:flex;gap:12px;margin-top:10px;justify-content:center;}
+  .foot-soc{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(251,246,236,0.18);border-radius:50%;color:rgba(251,246,236,0.6);transition:all .25s;flex-shrink:0;text-decoration:none;}
+  .foot-soc:hover{border-color:rgba(251,246,236,0.65);color:#FBF6EC;}
+  .foot-soc svg{width:15px;height:15px;}
+  .amp{font-family:Georgia,'Times New Roman',serif;font-size:0.8em;font-weight:400;}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div></div>
+    <div class="tb-right">
+      <a href="tel:+84908836663">+84 908 836 663</a>
+      <a href="mailto:contact@dainoi.com">contact@dainoi.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER + CAT-BAR wrapper (fixed together) -->
+<div id="site-top">
+<header>
+  <nav class="wrap">
+    <a href="nhiphue-trangchu.html" class="logo-mark">
+      <img src="logo/nhiphue-logo.png" alt="Nhịp Huế">
+    </a>
+    <div class="navlinks">
+      <button class="cat-btn active" data-cat="am-thuc">Ẩm thực</button>
+      <button class="cat-btn" data-cat="di-kham-pha">Đi <span class="amp">&amp;</span> Khám phá</button>
+      <button class="cat-btn" data-cat="nhip-song">Nhịp sống</button>
+      <button class="cat-btn" data-cat="van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</button>
+      <button class="cat-btn" data-cat="mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</button>
+    </div>
+    <div class="nav-right">
+      <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="nav-cta">Đặt phòng</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+</div><!-- /site-top -->
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" class="mobile-link" data-cat="am-thuc">Ẩm thực</a>
+  <a href="#" class="mobile-link" data-cat="di-kham-pha">Đi <span class="amp">&amp;</span> Khám phá</a>
+  <a href="#" class="mobile-link" data-cat="nhip-song">Nhịp sống</a>
+  <a href="#" class="mobile-link" data-cat="van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di sản</a>
+  <a href="#" class="mobile-link" data-cat="mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+  <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="mobile-cta">Đặt phòng ngay</a>
+</div>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <div class="lattice"></div>
+
+</section>
+
+<!-- BLOG LAYOUT -->
+<section class="blog-section">
+  <div class="wrap">
+
+    <div class="blog-layout" id="blogLayout">
+
+      <!-- LEFT: Featured -->
+      <article class="post-featured" data-cat="am-thuc">
+        <a href="am-thuc/bun-bo-hue/bun-bo-hue.html" class="feat-link">
+          <img src="https://images.pexels.com/photos/1001773/pexels-photo-1001773.jpeg?auto=compress&cs=tinysrgb&w=1000&h=700&dpr=1&fit=crop" alt="Tô bún bò Huế đậm đà với sợi bún to và nước dùng sắc màu">
+          <div class="feat-overlay">
+            <div class="feat-meta">
+              <span>Tháng 6, 2026</span>
+            </div>
+            <h2 class="feat-title">Bún Bò Huế: Không chỉ là cay, mà là tinh hoa ẩm thực Cố Đô</h2>
+          </div>
+        </a>
+      </article>
+
+
+      <article class="post-featured" data-cat="di-kham-pha" style="display:none">
+        <a href="di-kham-pha/pha-tam-giang/pha-tam-giang.html" class="feat-link">
+          <img src="di-kham-pha/pha-tam-giang/Ảnh/cover.jpg" alt="Phá Tam Giang: Rộng Đến Mức Không Biết Mình Đang Đứng Ở Đâu" onerror="this.remove()">
+          <div class="feat-overlay">
+            <div class="feat-meta">
+              <span>Tháng 7, 2026</span>
+            </div>
+            <h2 class="feat-title">Phá Tam Giang: Rộng Đến Mức Không Biết Mình Đang Đứng Ở Đâu</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="post-featured" data-cat="nhip-song" style="display:none">
+        <a href="nhip-song/cho-dong-ba/cho-dong-ba.html" class="feat-link">
+          <img src="nhip-song/cho-dong-ba/Ảnh/cover.jpg" alt="Chợ Đông Ba 5 giờ sáng — trước khi khách du lịch đến" onerror="this.remove()">
+          <div class="feat-overlay">
+            <div class="feat-meta">
+              <span>Tháng 6, 2026</span>
+            </div>
+            <h2 class="feat-title">Chợ Đông Ba 5 giờ sáng — trước khi khách du lịch đến</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="post-featured" data-cat="van-hoa-di-san" style="display:none">
+        <a href="van-hoa-di-san/nha-nhac/nha-nhac.html" class="feat-link">
+          <img src="van-hoa-di-san/nha-nhac/Ảnh/cover.jpg" alt="Nhã nhạc không phải để nghe — mà để cảm thấy mình nhỏ lại" onerror="this.remove()">
+          <div class="feat-overlay">
+            <div class="feat-meta">
+              <span>Tháng 6, 2026</span>
+            </div>
+            <h2 class="feat-title">Nhã nhạc không phải để nghe — mà để cảm thấy mình nhỏ lại</h2>
+          </div>
+        </a>
+      </article>
+
+      <article class="post-featured" data-cat="mua-le-hoi" style="display:none">
+        <a href="mua-le-hoi/mua-hue-thang-10/mua-hue-thang-10.html" class="feat-link">
+          <img src="mua-le-hoi/mua-hue-thang-10/Ảnh/cover.jpg" alt="Mưa Huế tháng 10 — không buồn, chỉ là Huế đang về mình" onerror="this.remove()">
+          <div class="feat-overlay">
+            <div class="feat-meta">
+              <span>Tháng 6, 2026</span>
+            </div>
+            <h2 class="feat-title">Mưa Huế tháng 10 — không buồn, chỉ là Huế đang về mình</h2>
+          </div>
+        </a>
+      </article>
+
+      <!-- RIGHT: Article list -->
+      <div class="post-list" id="postList">
+
+        <a href="am-thuc/mam-com-hue/mam-com-hue.html" class="post-list-item" data-cat="am-thuc">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Mâm Cơm Huế Ngày Mưa</h2>
+            <p class="post-list-excerpt">Mưa Huế không rơi như mưa nơi khác. Nó cứ ở đó — từ sáng đến tối. Người Huế ở nhà, và họ nấu. Bốn món giản dị đủ để ngồi lại, nghe tiếng mưa trên mái ngói.</p>
+          </div>
+          <div class="post-list-thumb">
+            <img src="https://images.pexels.com/photos/8467460/pexels-photo-8467460.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=1&fit=crop" alt="Mâm cơm Huế ngày mưa" loading="lazy">
+          </div>
+        </a>
+
+        <a href="am-thuc/che-hue/che-hue.html" class="post-list-item" data-cat="am-thuc">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Chè Huế: 36 Món, Ăn Răng Cho Hết?</h2>
+            <p class="post-list-excerpt">Người ta nói Huế có 36 loại chè — số thực có thể còn nhiều hơn. Từ chè cung đình hạt sen đậu ngự đến chè dân gian bột lọc heo quay. Một tour 5 chén, 50k là đủ để bắt đầu hiểu.</p>
+          </div>
+          <div class="post-list-thumb">
+            <img src="https://images.pexels.com/photos/33212602/pexels-photo-33212602.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=1&fit=crop" alt="Chè Huế" loading="lazy">
+          </div>
+        </a>
+
+        <a href="am-thuc/beo-nam-loc/beo-nam-loc.html" class="post-list-item" data-cat="am-thuc">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Bánh Huế: Nhỏ Mà Có Võ</h2>
+            <p class="post-list-excerpt">Bánh bèo, bánh nậm, bánh lọc, bánh ram ít — mỗi thứ một chén nhỏ. Nhưng cái nhỏ đó chứa đựng cả một thế giới kỹ thuật và câu chuyện mà không phải ai cũng đủ kiên nhẫn khám phá.</p>
+          </div>
+          <div class="post-list-thumb">
+            <img src="https://images.pexels.com/photos/29994646/pexels-photo-29994646.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&dpr=1&fit=crop" alt="Bánh Huế" loading="lazy">
+          </div>
+        </a>
+
+
+        <a href="di-kham-pha/di-bo-doc-hao-thanh/di-bo-doc-hao-thanh.html" class="post-list-item" data-cat="di-kham-pha">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Đi bộ dọc hào thành lúc 6 giờ sáng — trước khi Huế thức</h2>
+            <p class="post-list-excerpt">Hào thành Huế lúc sáng sớm là một Huế khác — sương còn đọng, người thật, không khách du lịch. Đi bộ một vòng trước 7 giờ để thấy Kinh Thành sống thật.</p>
+          </div>
+          <div class="post-list-thumb"><img src="di-kham-pha/pha-tam-giang/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="di-kham-pha/hem-kinh-thanh/hem-kinh-thanh.html" class="post-list-item" data-cat="di-kham-pha">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Những con hẻm trong Kinh Thành không có trên Google Maps</h2>
+            <p class="post-list-excerpt">Trong Kinh Thành Huế có những con hẻm nhỏ không tên, không bảng, không trên bản đồ — nhưng người sống ở đó gọi là nhà từ mấy đời nay. Đây mới là Huế thật.</p>
+          </div>
+          <div class="post-list-thumb"><img src="di-kham-pha/hem-kinh-thanh/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="di-kham-pha/lang-tu-duc/lang-tu-duc.html" class="post-list-item" data-cat="di-kham-pha">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Lăng Tự Đức không phải để check-in — mà để ngồi yên</h2>
+            <p class="post-list-excerpt">Lăng Tự Đức là một trong những nơi yên tĩnh nhất Huế — nhưng hầu hết khách đến chỉ chụp ảnh rồi đi. Đây là cách người Huế thật sự trải nghiệm nơi này.</p>
+          </div>
+          <div class="post-list-thumb"><img src="di-kham-pha/lang-tu-duc/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="di-kham-pha/vy-da/vy-da.html" class="post-list-item" data-cat="di-kham-pha">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Vỹ Dạ buổi chiều, bên kia sông, người ta sống khác</h2>
+            <p class="post-list-excerpt">Vỹ Dạ cách trung tâm Huế một con sông — nhưng nhịp sống ở đó khác hoàn toàn. Hàng dừa, biệt thự cũ, mấy con hẻm mà Hàn Mặc Tử từng đi.</p>
+          </div>
+          <div class="post-list-thumb"><img src="di-kham-pha/vy-da/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="mua-le-hoi/tet-hue-song-huong/tet-hue-song-huong.html" class="post-list-item" data-cat="mua-le-hoi">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Tết ở Huế: Pháo hoa trên sông Hương và mùi nhang từ lúc 3 giờ sáng</h2>
+            <p class="post-list-excerpt">Tết ở Huế khác Tết Hà Nội, khác Tết Sài Gòn — yên hơn, sâu hơn, và đậm nghi lễ hơn. Pháo hoa giao thừa trên sông Hương và mùi nhang từ tờ mờ sáng là thứ người Huế xa nhà nhớ nhất.</p>
+          </div>
+          <div class="post-list-thumb"><img src="mua-le-hoi/tet-hue-song-huong/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="mua-le-hoi/festival-hue/festival-hue.html" class="post-list-item" data-cat="mua-le-hoi">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Festival Huế nhìn từ phía người Huế — không phải phía khán đài</h2>
+            <p class="post-list-excerpt">Festival Huế tổ chức 2 năm một lần là sự kiện văn hoá lớn nhất miền Trung. Nhưng người Huế trải nghiệm Festival khác với khách du lịch — và góc nhìn đó hay hơn nhiều.</p>
+          </div>
+          <div class="post-list-thumb"><img src="mua-le-hoi/festival-hue/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="mua-le-hoi/mua-xuan-hue/mua-xuan-hue.html" class="post-list-item" data-cat="mua-le-hoi">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Tháng 3 Huế có mưa bụi — người ta gọi là mưa xuân, tau gọi là Huế đang thở</h2>
+            <p class="post-list-excerpt">Tháng 3 ở Huế có mưa bụi mỏng, không khí ẩm nhẹ, hoa xuân đang tàn và mùa hè chưa đến — đó là khoảnh khắc Huế dịu dàng và riêng tư nhất trong năm.</p>
+          </div>
+          <div class="post-list-thumb"><img src="mua-le-hoi/mua-xuan-hue/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="mua-le-hoi/gio-to-dam-gio-hue/gio-to-dam-gio-hue.html" class="post-list-item" data-cat="mua-le-hoi">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Giỗ Tổ, đám giỗ, cúng rằm — lịch Huế chạy theo việc, không theo tuần</h2>
+            <p class="post-list-excerpt">Người Huế sống theo một lịch khác — lịch của nghi lễ, của ngày giỗ, của rằm và mùng một. Hiểu lịch đó thì mới hiểu vì sao Huế làm nhiều thứ theo cách không giải thích được.</p>
+          </div>
+          <div class="post-list-thumb"><img src="mua-le-hoi/gio-to-dam-gio-hue/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="nhip-song/mua-hue/mua-hue.html" class="post-list-item" data-cat="nhip-song">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Mưa Huế mà kéo dài qua trưa thì biết hôm nay đừng có kế hoạch</h2>
+            <p class="post-list-excerpt">Mưa Huế không giống mưa nơi khác — dài, lạnh, và dạy người ta cách ngồi yên. Đến Huế mùa mưa không phải xui — là may mắn nếu biết tận hưởng đúng cách.</p>
+          </div>
+          <div class="post-list-thumb"><img src="nhip-song/mua-hue/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="nhip-song/nguoi-hue-khong-giai-thich/nguoi-hue-khong-giai-thich.html" class="post-list-item" data-cat="nhip-song">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Người Huế không giải thích — họ chỉ làm rứa từ trước đến chừ</h2>
+            <p class="post-list-excerpt">Người Huế có nhiều thứ làm mà không giải thích — cách ăn, cách nói, cách đặt bàn thờ, cách tiếp khách. Không phải bí ẩn. Chỉ là truyền thống lâu đến mức không cần nói nữa.</p>
+          </div>
+          <div class="post-list-thumb"><img src="nhip-song/nguoi-hue-khong-giai-thich/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="nhip-song/chieu-tran-phu/chieu-tran-phu.html" class="post-list-item" data-cat="nhip-song">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Chiều tắt nắng ở đường Trần Phú — cái chậm mà người đi xa hay nhớ</h2>
+            <p class="post-list-excerpt">Đường Trần Phú trong Kinh Thành Huế vào buổi chiều là một trong những cảnh đẹp yên tĩnh nhất cố đô — hàng cây cổ thụ, ánh nắng vàng, nhịp sống chậm mà người Huế xa nhà hay nhớ.</p>
+          </div>
+          <div class="post-list-thumb"><img src="nhip-song/chieu-tran-phu/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="nhip-song/tiem-toc-cu/tiem-toc-cu.html" class="post-list-item" data-cat="nhip-song">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Tiệm tóc cũ, ông thợ già, và chuyện Huế kể mà không ai hỏi</h2>
+            <p class="post-list-excerpt">Những tiệm tóc cũ trong hẻm Huế không chỉ là chỗ cắt tóc — đó là nơi lưu giữ câu chuyện của một khu phố, một con người, một thời Huế đã qua mà chưa mất hẳn.</p>
+          </div>
+          <div class="post-list-thumb"><img src="nhip-song/tiem-toc-cu/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="van-hoa-di-san/hoang-thanh-sang-som/hoang-thanh-sang-som.html" class="post-list-item" data-cat="van-hoa-di-san">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Hoàng Thành buổi sáng sớm: Khi chưa có ai, đá rêu nói chuyện</h2>
+            <p class="post-list-excerpt">Hoàng Thành Huế trước 8 giờ sáng là nơi hoàn toàn khác — không đoàn tour, không tiếng loa, chỉ có không gian cổ kính và cảm giác mình đang đi trong lịch sử thật sự.</p>
+          </div>
+          <div class="post-list-thumb"><img src="van-hoa-di-san/hoang-thanh-sang-som/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="van-hoa-di-san/hoa-giay-thanh-tien/hoa-giay-thanh-tien.html" class="post-list-item" data-cat="van-hoa-di-san">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Nghề làm hoa giấy Thanh Tiên — tay bà già, màu sắc trẻ con</h2>
+            <p class="post-list-excerpt">Làng Thanh Tiên gần Huế giữ nghề làm hoa giấy thờ hơn 400 năm. Không phải hàng lưu niệm — là vật thiêng liêng người Huế đặt lên bàn thờ mỗi dịp Tết.</p>
+          </div>
+          <div class="post-list-thumb"><img src="van-hoa-di-san/hoa-giay-thanh-tien/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="van-hoa-di-san/ao-dai-hue/ao-dai-hue.html" class="post-list-item" data-cat="van-hoa-di-san">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">Áo dài Huế không phải để mặc đẹp — mà để đi đứng đúng cách</h2>
+            <p class="post-list-excerpt">Áo dài Huế có nét khác biệt riêng về màu sắc, dáng may, và cách mặc. Người Huế không mặc áo dài để chụp ảnh — là để tham dự, để thể hiện mình đang ở đâu trong một nghi lễ.</p>
+          </div>
+          <div class="post-list-thumb"><img src="van-hoa-di-san/ao-dai-hue/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+        <a href="van-hoa-di-san/12-cua-kinh-thanh/12-cua-kinh-thanh.html" class="post-list-item" data-cat="van-hoa-di-san">
+          <div class="post-list-body">
+            <div class="post-list-meta">
+              <span class="date">Tháng 6, 2026</span>
+            </div>
+            <h2 class="post-list-title">12 cửa Kinh Thành, mỗi cửa một nhịp sống khác nhau</h2>
+            <p class="post-list-excerpt">Kinh Thành Huế có 12 cửa — mỗi cửa mở ra một khu vực khác, một nhịp sống khác, một góc Huế mà hầu hết khách du lịch chưa đặt chân đến.</p>
+          </div>
+          <div class="post-list-thumb"><img src="van-hoa-di-san/12-cua-kinh-thanh/Ảnh/cover.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        </a>
+
+      </div><!-- /post-list -->
+    </div><!-- /blog-layout -->
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="blog-cta">
+  <div class="lattice"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <h2>Đọc xong, muốn đến Huế chưa?</h2>
+    <div class="stay-grid">
+      <div class="stay-card">
+        <img src="images/dai-noi.jpg" alt="Dainoi Homestay" loading="lazy">
+        <div class="stay-head">
+          <h3>Dainoi Homestay</h3>
+          <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="btn-book">Đặt phòng</a>
+        </div>
+        <p>63 Ông Ích Khiêm · cách Đại Nội 5 phút đi bộ</p>
+      </div>
+      <div class="stay-card">
+        <img src="images/zen-apartment.jpg" alt="Zen Apartment" loading="lazy">
+        <div class="stay-head">
+          <h3>Zen Apartment</h3>
+          <a href="#" class="btn-book">Đặt phòng</a>
+        </div>
+        <p>Nera Garden · gần Aeon Mall Huế</p>
+      </div>
+      <div class="stay-card">
+        <img src="images/hue-heritage.jpg" alt="Hue Heritage" loading="lazy">
+        <div class="stay-head">
+          <h3>Hue Heritage</h3>
+          <a href="#" class="btn-book">Đặt phòng</a>
+        </div>
+        <p>Chung cư cao cấp · cạnh Melia Vinpearl Huế</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-mark"><img src="logo/nhiphue-logo.png" alt="Nhịp Huế"></div>
+        <div class="foot-soc-icons">
+          <a href="https://www.facebook.com/thedainoi" class="foot-soc" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H7v4h2v12h5V12h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v1z"/></svg></a>
+          <a href="https://www.instagram.com/dainoihue" class="foot-soc" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.6-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.64.07-4.85.07-3.2 0-3.6-.01-4.85-.07C3.69 21.77 2.15 20.23 2 17c-.06-1.25-.07-1.64-.07-4.85 0-3.2.01-3.6.07-4.85C2.15 4.07 3.7 2.35 7.15 2.27 8.4 2.21 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32A6.16 6.16 0 0012 5.84zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+          <a href="https://www.threads.com/@dainoihue" class="foot-soc" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.858 1.205 8.61.024 12.191 0h.016c2.725.02 5.017.814 6.815 2.361 1.705 1.463 2.844 3.517 3.382 6.102l-2.055.406c-.46-2.202-1.35-3.93-2.645-5.136-1.377-1.282-3.171-1.94-5.336-1.957-2.66.024-4.8.887-6.347 2.565-1.498 1.622-2.254 3.988-2.249 6.858.01 2.87.783 5.237 2.299 6.849 1.562 1.66 3.707 2.512 6.378 2.528 2.368-.015 4.032-.614 5.317-1.89 1.315-1.305 2.014-3.193 2.084-5.642-.437.114-.893.175-1.362.175-3.452 0-6.025-2.437-6.025-5.862 0-3.335 2.504-5.793 5.862-5.863l.138-.001c1.965.017 3.611.673 4.773 1.9.993 1.047 1.554 2.518 1.636 4.305v.048C23.999 16.012 22.24 24 12.186 24zm5.15-12.75c-.028-.024-.06-.045-.09-.067-1.28-.934-2.808-1.433-4.436-1.433-1.964 0-3.346 1.177-3.346 2.858 0 1.704 1.441 2.858 3.562 2.858.62 0 1.196-.093 1.718-.275 1.064-.368 1.81-1.09 2.14-2.082.127-.382.19-.78.19-1.173 0-.64-.262-1.196-.738-1.686z"/></svg></a>
+          <a href="https://www.tiktok.com/@thedainoi" class="foot-soc" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.02-.09z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>Bản quyền © 2026, nhiphue.com</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link,.mobile-cta').forEach(l => {
+    l.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  document.querySelectorAll('.mobile-link[data-cat]').forEach(l => {
+    l.addEventListener('click', e => {
+      e.preventDefault();
+      const b = document.querySelector(`.cat-btn[data-cat="${l.dataset.cat}"]`);
+      if (b) b.click();
+    });
+  });
+
+  // Auto-filter from URL param (e.g. ?cat=am-thuc from article hashtag links)
+  window.addEventListener('DOMContentLoaded', () => {
+    const p = new URLSearchParams(window.location.search).get('cat');
+    const btn = p ? document.querySelector(`.cat-btn[data-cat="${p}"]`) : null;
+    /* Không còn tab "Tất cả" — mặc định mở chuyên mục đầu tiên */
+    (btn || document.querySelector('.cat-btn.active') || document.querySelector('.cat-btn')).click();
+  });
+
+  // Category filter
+  const catBtns = document.querySelectorAll('.cat-btn');
+  const layout   = document.getElementById('blogLayout');
+  const featureds = layout.querySelectorAll('.post-featured');
+  const postList = document.getElementById('postList');
+  const listItems = postList.querySelectorAll('.post-list-item');
+
+  // Áp bộ lọc chuyên mục cho featured + danh sách
+  const applyFilter = (cat) => {
+    const oldEmpty = postList.querySelector('.empty-cat');
+    if (oldEmpty) oldEmpty.remove();
+
+    let featMatch = false;
+    featureds.forEach(ft => {
+      const show = ft.dataset.cat === cat;
+      ft.style.display = show ? '' : 'none';
+      if (show) featMatch = true;
+    });
+    layout.classList.toggle('no-featured', !featMatch);
+
+    let visible = 0;
+    listItems.forEach(item => {
+      const match = item.dataset.cat === cat;
+      item.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    if (visible === 0 && !featMatch) {
+      const empty = document.createElement('div');
+      empty.className = 'empty-cat';
+      empty.innerHTML = '<span class="eyebrow">Đang cập nhật</span><p>Bài viết cho danh mục này sẽ sớm ra mắt.</p>';
+      postList.appendChild(empty);
+    }
+  };
+
+  // Cuộn mượt tự điều khiển: ease-in-out ~800ms
+  // (dùng behavior:'instant' từng bước để không chồng với scroll-behavior:smooth của trang)
+  const smoothScrollTo = (to, dur, done) => {
+    const from = window.scrollY, delta = to - from, t0 = performance.now();
+    const ease = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      window.scrollTo({ top: from + delta * ease(p), behavior: 'instant' });
+      if (p < 1) requestAnimationFrame(step);
+      else if (done) done();
+    };
+    requestAnimationFrame(step);
+  };
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+
+      const hero = document.querySelector('.blog-hero');
+      const target = Math.max(0, hero.offsetTop + hero.offsetHeight - siteTop.offsetHeight);
+      if (window.scrollY > target + 10) {
+        /* Cuộn xong mới đổi nội dung — tránh khựng do trang đổi chiều cao giữa lúc cuộn */
+        smoothScrollTo(target, 800, () => {
+          applyFilter(cat);
+        });
+      } else {
+        applyFilter(cat);
+      }
+    });
+  });
+
+  // Smart scroll: slide entire #site-top (header + cat-bar) on scroll
+  const siteTop = document.getElementById('site-top');
+  let lastScrollY = 0;
+
+  const catBar = document.querySelector('.cat-bar');
+  const syncCatBar = () => {
+    /* Thanh chuyên mục dính: header hiện thì nằm dưới header, header ẩn thì sát mép trên */
+    if (catBar) catBar.style.top = siteTop.classList.contains('nav-hidden') ? '0px' : siteTop.offsetHeight + 'px';
+  };
+  syncCatBar();
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    siteTop.classList.toggle('nav-hidden', y > lastScrollY && y > 80);
+    siteTop.classList.toggle('shadowed', y > 10);
+    lastScrollY = y;
+    syncCatBar();
+  }, { passive: true });
+</script>
+
+</body>
+</html>
