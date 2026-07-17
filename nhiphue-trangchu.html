@@ -34,6 +34,8 @@
   nav.topnav{width:100%;max-width:1460px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
   .logo-mark{font-family:'Fraunces',serif;font-size:29px;letter-spacing:0.14em;font-weight:500;display:flex;align-items:center;gap:14px;}
   .logo-mark img{width:68px;height:68px;}
+  .logo-mark img.logo-text{width:auto;height:32px;margin-left:-9px;}
+
   .navlinks{display:flex;gap:30px;font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;}
   .navlinks a{position:relative;padding:4px 0;opacity:0.82;transition:opacity .25s;}
   .navlinks a:hover,.navlinks a.active{opacity:1;}
@@ -79,6 +81,21 @@
   .ns-cell:hover img{transform:scale(1.05);}
   a.ns-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,25,0) 40%,rgba(20,10,25,0.8));}
   .ns-cell span{position:absolute;z-index:2;left:0;right:0;bottom:0;height:calc(1.4em*4 + 20px);padding:10px 11px;color:#FBF6EC;font-family:'Fraunces',serif;font-size:17px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+
+  /* ══ Khối giới thiệu cẩm nang ══ */
+  .cn-teaser{max-width:1460px;margin:22px auto 0;padding:0 12px 10px;display:grid;grid-template-columns:1.35fr 1fr;gap:24px;align-items:stretch;}
+  .cn-cover{position:relative;display:block;border-radius:14px;overflow:hidden;min-height:300px;background:var(--ink);}
+  .cn-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;transition:transform .5s;}
+  .cn-cover:hover img{transform:scale(1.03);}
+  .cn-cover span{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:46px 22px 18px;color:rgba(251,246,236,0.85);font-size:14.5px;line-height:1.7;background:linear-gradient(180deg,transparent,rgba(20,10,25,0.9));}
+  .cn-cover em{display:block;font-family:'Fraunces',serif;font-style:normal;font-size:26px;color:#FBF6EC;margin-bottom:5px;}
+  .cn-side{display:flex;flex-direction:column;gap:14px;}
+  .cn-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;}
+  .q2{background:var(--paper);border:1px solid var(--line-soft);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;}
+  .q2 b{font-family:'Fraunces',serif;font-weight:400;font-size:23px;color:var(--terracotta-deep);margin-bottom:3px;}
+  .q2 span{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);opacity:0.8;}
+  .cn-btn{display:block;text-align:center;background:var(--terracotta);color:#FBF6EC;padding:15px;border-radius:10px;font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;transition:background .3s;}
+  .cn-btn:hover{background:var(--terracotta-deep);}
 
   /* ══ Tiêu đề cẩm nang ══ */
   .guide-title{max-width:1460px;margin:76px auto 0;padding:0 12px;}
@@ -267,6 +284,11 @@
     .season-grid{grid-template-columns:1fr 1fr;}
     .cats{padding:36px 11px 0;grid-template-columns:1fr;gap:32px;}
     .guide-title{padding:0 22px;margin-top:58px;}
+    .cn-teaser{grid-template-columns:1fr;padding:0 22px 6px;gap:14px;margin-top:14px;}
+    .cn-cover{min-height:0;height:0;padding-bottom:56%;}
+    .cn-cover em{font-size:21px;}
+    .q2{padding:12px 13px;}
+    .q2 b{font-size:19px;}
     .ns-strip{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:28%;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
     .ns-strip::-webkit-scrollbar{display:none;}
     .ns-cell span{font-size:11px;padding:7px 8px;height:calc(1.4em*4 + 14px);}
@@ -327,13 +349,14 @@
 
 <header id="siteHeader">
   <nav class="topnav">
-    <a href="nhiphue-trangchu.html" class="logo-mark"><img src="logo/nhiphue-logo.png" alt="Nhịp Huế"></a>
+    <a href="nhiphue-trangchu.html" class="logo-mark"><img src="logo/nhiphue-logo.png" alt="Nhịp Huế"><img class="logo-text" src="logo/nhiphue-text.png" alt="Nhịp Huế"></a>
     <div class="navlinks">
       <a href="nhip-hue.html?cat=am-thuc">Ẩm thực</a>
       <a href="nhip-hue.html?cat=di-kham-pha">Đi <span class="amp">&amp;</span> Khám phá</a>
       <a href="nhip-hue.html?cat=nhip-song">Nhịp sống</a>
       <a href="nhip-hue.html?cat=van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</a>
       <a href="nhip-hue.html?cat=mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+      <a href="cam-nang.html">Cẩm nang</a>
     </div>
     <div style="display:flex;align-items:center;gap:14px;">
       <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="nav-cta">Đặt phòng</a>
@@ -348,6 +371,7 @@
   <a href="nhip-hue.html?cat=nhip-song" class="mobile-link">Nhịp sống</a>
   <a href="nhip-hue.html?cat=van-hoa-di-san" class="mobile-link">Văn hoá <span class="amp">&amp;</span> Di sản</a>
   <a href="nhip-hue.html?cat=mua-le-hoi" class="mobile-link">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+  <a href="cam-nang.html" class="mobile-link">Cẩm nang</a>
   <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="mobile-cta">Đặt phòng ngay</a>
 </div>
 
@@ -499,260 +523,22 @@
   <h2>Cẩm nang đi Huế</h2>
 </div>
 
-<!-- BỐ CỤC SỔ TAY -->
-<div class="guide">
-
-  <!-- MỤC LỤC DỌC -->
-  <aside class="toc" id="toc">
-    <div class="toc-title">Mục lục</div>
-    <nav>
-      <a href="#mua"><i>01</i>Đi tháng nào</a>
-      <a href="#o-dau"><i>02</i>Ở đâu khi đến Huế</a>
-      <a href="#di-lai"><i>03</i>Đi lại trong Huế</a>
-      <a href="#lich-trinh"><i>04</i>Lịch trình 48h</a>
-      <a href="#an-gi"><i>05</i>Ăn gì · Giá</a>
-      <a href="#ve"><i>06</i>Vé tham quan</a>
-      <a href="#faq"><i>07</i>Hỏi nhanh</a>
-      <a href="#meo"><i>08</i>Mẹo địa phương</a>
-    </nav>
-  </aside>
-
-  <!-- NỘI DUNG -->
-  <main>
-
-    <section class="block" id="mua" style="padding-top:8px;">
-      <div class="sec-head"><div class="seal">01</div><h2>Nên đi Huế tháng nào?</h2></div>
-      <p class="sub">Huế có hai mùa rõ: khô và mưa. Không có mùa nào "sai" — chỉ cần biết trước mình sẽ gặp gì.</p>
-      <div class="season-grid">
-        <div class="season s1 best">
-          <h4>Tháng 1 – 4</h4>
-          <span class="tag">Đẹp nhất</span>
-          <p>Trời mát 20–28°C, ít mưa, cây xanh sau mùa nước. Tết ở Huế trầm và đẹp. Dễ chịu nhất để đi bộ, đạp xe quanh Kinh Thành.</p>
-        </div>
-        <div class="season s2">
-          <h4>Tháng 5 – 8</h4>
-          <span class="tag">Nắng · Lễ hội</span>
-          <p>Nắng gắt, có ngày 38–40°C. Bù lại là mùa Festival Huế và sen nở hồ Tịnh Tâm. Đi sớm về trưa, chiều muộn hãy ra đường.</p>
-        </div>
-        <div class="season s3">
-          <h4>Tháng 9 – 12</h4>
-          <span class="tag">Mùa mưa</span>
-          <p>Mưa dầm, có khi 3–4 ngày liền, đỉnh điểm tháng 10–11. Nhưng Huế trong mưa có màu riêng — rêu đậm hơn, thành quách trầm hơn. Mang áo mưa, đừng mang kỳ vọng nắng.</p>
-        </div>
-        <div class="season s4">
-          <h4>Mẹo chọn ngày</h4>
-          <span class="tag">Từ người Huế</span>
-          <p>Mưa Huế mà kéo dài qua trưa là mưa cả ngày — hôm đó dành cho bảo tàng, cà phê và ăn. Nắng lên thì ưu tiên lăng tẩm ngay, đừng để dành.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <div class="sep"></div>
-
-    <section class="block" id="o-dau">
-      <div class="sec-head"><div class="seal">02</div><h2>Ở đâu khi đến Huế?</h2></div>
-      <p class="sub">Ba chỗ ở cùng hệ thống — chọn theo nhịp chuyến đi của bạn.</p>
-      <div class="stay-grid">
-      <div class="stay-card">
-        <img src="images/dai-noi.jpg" alt="Dainoi Homestay" loading="lazy">
-        <div class="stay-head">
-          <h3>Dainoi Homestay</h3>
-          <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>63 Ông Ích Khiêm · cách Đại Nội 5 phút đi bộ</p>
-      </div>
-      <div class="stay-card">
-        <img src="images/zen-apartment.jpg" alt="Zen Apartment" loading="lazy">
-        <div class="stay-head">
-          <h3>Zen Apartment</h3>
-          <a href="#" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>Nera Garden · gần Aeon Mall Huế</p>
-      </div>
-      <div class="stay-card">
-        <img src="images/hue-heritage.jpg" alt="Hue Heritage" loading="lazy">
-        <div class="stay-head">
-          <h3>Hue Heritage</h3>
-          <a href="#" class="btn-book">Đặt phòng</a>
-        </div>
-        <p>Chung cư cao cấp · cạnh Melia Vinpearl Huế</p>
-      </div>
+<!-- CẨM NANG (giới thiệu) -->
+<section class="cn-teaser">
+  <a class="cn-cover" href="cam-nang.html">
+    <img src="logo/nhiphue-cover.PNG" alt="Cẩm nang đi Huế" loading="lazy">
+    <span><em>Lần đầu đến Huế?</em>Đi tháng nào, ở đâu, ăn gì với giá bao nhiêu, và 48 giờ đầu tiên nên dùng vào việc chi — từ góc nhìn của người sống trong lòng Kinh Thành.</span>
+  </a>
+  <div class="cn-side">
+    <div class="cn-facts">
+      <div class="q2"><b>T1 – T4</b><span>mùa đẹp nhất</span></div>
+      <div class="q2"><b>48 giờ</b><span>đủ cho lần đầu</span></div>
+      <div class="q2"><b>~150k/ngày</b><span>ăn ngon kiểu Huế</span></div>
+      <div class="q2"><b>8 mục</b><span>từ mùa đến mẹo địa phương</span></div>
     </div>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="di-lai">
-      <div class="sec-head"><div class="seal">03</div><h2>Đi lại trong Huế</h2></div>
-      <p class="sub">Huế nhỏ và phẳng — trung tâm gói gọn trong bán kính 5 km. Đây là lợi thế lớn nhất của nó.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-head"><div class="gate">🛵</div><h4>Xe máy — nên nhất</h4></div>
-          <p>Tự do nhất để ra Phá Tam Giang, lăng Tự Đức, làng hoa giấy Thanh Tiên. <strong style="font-weight:500;color:var(--terracotta-deep);">Bạn có thể thuê xe máy ngay tại Dainoi Homestay — 150.000đ cho 24 tiếng</strong>, lễ tân giao xe tận nơi và chỉ luôn đường ít người đi.</p>
-          <span class="price" style="font-weight:500;">Thuê tại Dainoi: 150.000đ / 24 tiếng · đổ đầy bình ~50k</span>
-        </div>
-        <div class="card">
-          <div class="card-head"><div class="gate">🚶</div><h4>Đi bộ trong Kinh Thành</h4></div>
-          <p>Dainoi ở 63 Ông Ích Khiêm — ngay trong Kinh Thành. Đại Nội, hào thành, hàng quán buổi sáng đều trong tầm 10–20 phút đi bộ. Sáng sớm là khung giờ đẹp nhất.</p>
-          <span class="price">0 đồng — và đáng giá nhất</span>
-        </div>
-        <div class="card">
-          <div class="card-head"><div class="gate">🛺</div><h4>Taxi / Xích lô</h4></div>
-          <p>Taxi và xe công nghệ đầy đủ, phù hợp buổi tối hoặc trời mưa. Xích lô quanh Kinh Thành là trải nghiệm chậm rãi đúng chất Huế — thỏa thuận giá trước khi lên.</p>
-          <span class="price">Xích lô ~100–150k/giờ</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="lich-trinh">
-      <div class="sec-head"><div class="seal">04</div><h2>48 giờ đầu tiên ở Huế</h2></div>
-      <p class="sub">Lịch trình mẫu xuất phát từ Dainoi — đủ chậm để cảm, đủ đầy để không tiếc.</p>
-
-      <div class="day">
-        <h3><span class="d-tag">Ngày 1</span> Trong lòng Kinh Thành</h3>
-        <div class="timeline">
-          <div class="slot"><span class="time">05:30 – 07:00</span>
-            <h5>Bún bò buổi sáng</h5>
-            <p>Ra đường lúc Huế chưa thức hẳn, tìm quán có khói. <a href="am-thuc/bun-bo-hue/bun-bo-hue.html" target="_blank" rel="noopener">Đọc trước: Bún Bò Huế — không chỉ là cay</a></p>
-          </div>
-          <div class="slot"><span class="time">07:30 – 11:00</span>
-            <h5>Đại Nội — Hoàng Thành</h5>
-            <p>Vào cổng sớm để tránh nắng và đoàn khách. Dành ít nhất 3 giờ, đi chậm. <a href="van-hoa-di-san/hoang-thanh-sang-som/hoang-thanh-sang-som.html" target="_blank" rel="noopener">Hoàng Thành sáng sớm</a></p>
-          </div>
-          <div class="slot"><span class="time">11:30 – 13:30</span>
-            <h5>Cơm trưa kiểu Huế + nghỉ</h5>
-            <p>Một mâm cơm nhỏ đúng vị, rồi về Dainoi tránh nắng. <a href="am-thuc/mam-com-hue/mam-com-hue.html" target="_blank" rel="noopener">Mâm cơm Huế ngày mưa</a></p>
-          </div>
-          <div class="slot"><span class="time">15:00 – 17:30</span>
-            <h5>Đi bộ dọc hào thành + chè chiều</h5>
-            <p>Hào thành lúc nắng xiên là đẹp nhất, kết thúc bằng ly chè. <a href="di-kham-pha/di-bo-doc-hao-thanh/di-bo-doc-hao-thanh.html" target="_blank" rel="noopener">Đi bộ dọc hào thành</a> · <a href="am-thuc/che-hue/che-hue.html" target="_blank" rel="noopener">Chè Huế: 36 món</a></p>
-          </div>
-          <div class="slot"><span class="time">18:30 – 21:00</span>
-            <h5>Bánh Huế + dạo bờ sông Hương</h5>
-            <p>Bèo nậm lọc bữa tối nhẹ, rồi qua cầu Trường Tiền lúc lên đèn. <a href="am-thuc/beo-nam-loc/beo-nam-loc.html" target="_blank" rel="noopener">Bánh Huế: nhỏ mà có võ</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <h3><span class="d-tag">Ngày 2</span> Ra khỏi thành</h3>
-        <div class="timeline">
-          <div class="slot"><span class="time">05:30 – 07:30</span>
-            <h5>Chợ Đông Ba trước giờ khách du lịch</h5>
-            <p>Đi chợ như người Huế — trước 6 giờ rưỡi. Ăn sáng ngay trong chợ. <a href="nhip-song/cho-dong-ba/cho-dong-ba.html" target="_blank" rel="noopener">Chợ Đông Ba 5 giờ sáng</a></p>
-          </div>
-          <div class="slot"><span class="time">08:30 – 11:30</span>
-            <h5>Lăng Tự Đức</h5>
-            <p>Lăng "nên đi nhất nếu chỉ đi một lăng" — kiến trúc nằm giữa rừng thông, khác hẳn Đại Nội. <a href="di-kham-pha/lang-tu-duc/lang-tu-duc.html" target="_blank" rel="noopener">Lăng Tự Đức</a></p>
-          </div>
-          <div class="slot"><span class="time">14:30 – 18:30</span>
-            <h5>Phá Tam Giang — hoàng hôn</h5>
-            <p>Chạy xe máy 12–15 km ra đầm phá lớn nhất Đông Nam Á, canh chiều tà. Không vé, không cổng. <a href="di-kham-pha/pha-tam-giang/pha-tam-giang.html" target="_blank" rel="noopener">Phá Tam Giang</a></p>
-          </div>
-          <div class="slot"><span class="time">19:30 – 21:30</span>
-            <h5>Tối cuối: ăn lại món ưng nhất</h5>
-            <p>Đêm cuối ở Huế không cần chỗ mới. Quay lại quán bạn thích nhất hai ngày qua — người Huế gọi đó là "ăn cho nhớ".</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="an-gi">
-      <div class="sec-head"><div class="seal">05</div><h2>Ăn gì — giá bao nhiêu?</h2></div>
-      <p class="sub">Giá đúng của món Huế rẻ hơn bạn nghĩ. Bảng này để bạn khỏi bị "giá khách du lịch".</p>
-      <div class="tbl"><table>
-        <thead><tr><th>Món</th><th>Giá thường thấy</th><th>Nên ăn lúc nào</th><th>Đọc thêm</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Món">Bún bò Huế</td><td class="p" data-label="Giá">30.000 – 45.000đ</td><td data-label="Nên ăn lúc nào">Sáng sớm, trước 9h</td><td data-label="Đọc thêm"><a href="am-thuc/bun-bo-hue/bun-bo-hue.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
-          <tr><td data-label="Món">Chè Huế (1 chén)</td><td class="p" data-label="Giá">10.000 – 20.000đ</td><td data-label="Nên ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm"><a href="am-thuc/che-hue/che-hue.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
-          <tr><td data-label="Món">Bánh bèo – nậm – lọc (phần)</td><td class="p" data-label="Giá">25.000 – 40.000đ</td><td data-label="Nên ăn lúc nào">Chiều, tối nhẹ</td><td data-label="Đọc thêm"><a href="am-thuc/beo-nam-loc/beo-nam-loc.html" target="_blank" rel="noopener">Đọc thêm</a></td></tr>
-          <tr><td data-label="Món">Cơm hến / bún hến</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Nên ăn lúc nào">Sáng, trưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Bánh canh</td><td class="p" data-label="Giá">20.000 – 35.000đ</td><td data-label="Nên ăn lúc nào">Chiều mưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Cà phê quán cũ</td><td class="p" data-label="Giá">15.000 – 30.000đ</td><td data-label="Nên ăn lúc nào">Cả ngày</td><td data-label="Đọc thêm">—</td></tr>
-          <tr><td data-label="Món">Bánh khoái</td><td class="p" data-label="Giá">30.000 – 50.000đ</td><td data-label="Nên ăn lúc nào">Chiều, tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Nem lụi (phần)</td><td class="p" data-label="Giá">35.000 – 60.000đ</td><td data-label="Nên ăn lúc nào">Tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bún thịt nướng / bánh ướt thịt nướng</td><td class="p" data-label="Giá">25.000 – 35.000đ</td><td data-label="Nên ăn lúc nào">Trưa, chiều</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bánh ép (món giới trẻ Huế)</td><td class="p" data-label="Giá">3.000 – 5.000đ/cái</td><td data-label="Nên ăn lúc nào">Xế chiều</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bún mắm nêm</td><td class="p" data-label="Giá">20.000 – 30.000đ</td><td data-label="Nên ăn lúc nào">Trưa</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Cơm âm phủ</td><td class="p" data-label="Giá">35.000 – 55.000đ</td><td data-label="Nên ăn lúc nào">Trưa, tối</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Cơm chay Huế (gần chùa)</td><td class="p" data-label="Giá">20.000 – 40.000đ</td><td data-label="Nên ăn lúc nào">Trưa, ngày rằm</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Bánh mì Huế</td><td class="p" data-label="Giá">15.000 – 25.000đ</td><td data-label="Nên ăn lúc nào">Sáng, khuya</td><td data-label="Đọc thêm">—</td></tr>
-          <tr class="extra"><td data-label="Món">Mè xửng, tôm chua (mua làm quà)</td><td class="p" data-label="Giá">30.000 – 80.000đ</td><td data-label="Nên ăn lúc nào">Mua ở chợ Đông Ba buổi sáng</td><td data-label="Đọc thêm">—</td></tr>
-        </tbody>
-      </table></div>
-      <button class="more-btn" data-more="Xem thêm 8 món ›" data-less="Thu gọn ‹">Xem thêm 8 món ›</button>
-      <p class="note">Quán trong hẻm, bàn thấp, không bảng hiệu thường ngon và đúng giá hơn quán mặt tiền phố du lịch.</p>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="ve">
-      <div class="sec-head"><div class="seal">06</div><h2>Vé tham quan</h2></div>
-      <p class="sub">Giá tham khảo cho khách Việt (người lớn) — kiểm tra lại tại cổng hoặc trang hueworldheritage trước khi đi.</p>
-      <div class="tbl"><table>
-        <thead><tr><th>Điểm</th><th>Vé tham khảo</th><th>Giờ mở cửa</th><th>Thời gian nên dành</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Điểm">Đại Nội (Hoàng Thành)</td><td class="p" data-label="Vé tham khảo">~200.000đ</td><td data-label="Giờ mở cửa">Sáng 6:30/7:00 – 17:30</td><td data-label="Nên dành">3 – 4 giờ</td></tr>
-          <tr><td data-label="Điểm">Lăng Tự Đức</td><td class="p" data-label="Vé tham khảo">~150.000đ</td><td data-label="Giờ mở cửa">7:00 – 17:30</td><td data-label="Nên dành">1.5 – 2 giờ</td></tr>
-          <tr><td data-label="Điểm">Lăng Khải Định</td><td class="p" data-label="Vé tham khảo">~150.000đ</td><td data-label="Giờ mở cửa">7:00 – 17:30</td><td data-label="Nên dành">1 giờ</td></tr>
-          <tr><td data-label="Điểm">Lăng Minh Mạng</td><td class="p" data-label="Vé tham khảo">~150.000đ</td><td data-label="Giờ mở cửa">7:00 – 17:30</td><td data-label="Nên dành">1.5 – 2 giờ</td></tr>
-          <tr><td data-label="Điểm">Vé gộp (Đại Nội + 3 lăng)</td><td class="p" data-label="Vé tham khảo">có combo, rẻ hơn mua lẻ</td><td data-label="Giờ mở cửa">—</td><td data-label="Nên dành">hỏi tại quầy vé</td></tr>
-          <tr><td data-label="Điểm">Phá Tam Giang, hào thành, chợ Đông Ba, chùa Thiên Mụ</td><td class="p" data-label="Vé tham khảo">Miễn phí</td><td data-label="Giờ mở cửa">—</td><td data-label="Nên dành">tùy bạn</td></tr>
-        </tbody>
-      </table></div>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="faq">
-      <div class="sec-head"><div class="seal">07</div><h2>Hỏi nhanh — đáp gọn</h2></div>
-      <p class="sub">Những câu khách ở Dainoi hay hỏi lễ tân nhất.</p>
-      <div class="faq-box">
-        <details>
-          <summary>Vào Đại Nội, lăng, chùa nên mặc gì?</summary>
-          <p>Kín vai và quá gối là được — đây là không gian thờ tự và di tích. Trời nắng nên đem nón, nước; sân gạch Đại Nội rất rộng và không có nhiều bóng râm.</p>
-        </details>
-        <details>
-          <summary>Trời mưa cả ngày thì làm gì?</summary>
-          <p>Đừng cố "chạy lịch". Mưa Huế là một phần của Huế: tìm quán cà phê cũ, ăn bánh canh nóng trong hẻm, hoặc mặc áo mưa đi bộ dọc hào thành — không khách du lịch, chỉ có mưa và mình.</p>
-        </details>
-        <details>
-          <summary>Đổi tiền, rút tiền có dễ không?</summary>
-          <p>ATM các ngân hàng lớn có khắp trung tâm và quanh chợ Đông Ba. Nhiều quán nhỏ chỉ nhận tiền mặt hoặc chuyển khoản — nên giữ sẵn tiền lẻ mệnh giá 10–50k để ăn hàng.</p>
-        </details>
-        <details>
-          <summary>Huế có an toàn khi ra đường buổi tối?</summary>
-          <p>Huế thuộc nhóm thành phố yên bình nhất để đi bộ buổi tối. Khu bờ sông Hương, cầu Trường Tiền, phố đi bộ đông vui đến khoảng 22h — sau đó cả thành phố đi ngủ khá sớm.</p>
-        </details>
-        <details>
-          <summary>Đi Huế mấy ngày là đủ?</summary>
-          <p>2 ngày là đủ cho lần đầu — như lịch trình phía trên. Nhưng người ở 3–4 ngày thường là người "hiểu" Huế nhất: có thời gian cho một buổi sáng không kế hoạch, và đó thường là buổi đáng nhớ nhất.</p>
-        </details>
-      </div>
-    </section>
-
-    <div class="sep"></div>
-
-    <section class="block" id="meo">
-      <div class="sec-head"><div class="seal">08</div><h2>Mẹo nhỏ từ người địa phương</h2></div>
-      <p class="sub">Những thứ không nằm trong guidebook.</p>
-      <div class="tips">
-        <div class="tip"><b>Dậy sớm có thưởng.</b> Món ngon nhất của Huế bán buổi sáng và hết trước 9 giờ. Ngủ nướng ở Huế là có giá của nó.</div>
-        <div class="tip"><b>Nhìn ghế mà chọn quán.</b> Quán không bảng hiệu mà đông người địa phương ngồi ghế thấp — cứ vào, không cần hỏi trước.</div>
-        <div class="tip"><b>Học 3 từ.</b> "Rứa" là vậy, "mô" là đâu, "răng" là sao. Biết 3 từ này, bạn được cười với nhiều hơn.</div>
-        <div class="tip"><b>Giờ vàng 5–6 giờ chiều.</b> Hào thành, sông Hương, Phá Tam Giang đều đẹp nhất lúc này.</div>
-        <div class="tip"><b>Mua quà buổi sáng.</b> Mè xửng, tôm chua, mắm ruốc ở chợ Đông Ba — hỏi giá trước, mua ở sạp có người Huế đang mua.</div>
-        <div class="tip"><b>Bí quá thì hỏi lễ tân Dainoi.</b> Người Huế chỉ đường kèm luôn quán ăn dọc đường.</div>
-      </div>
-    </section>
-
-  </main>
-</div>
+    <a class="cn-btn" href="cam-nang.html">Đọc toàn bộ cẩm nang →</a>
+  </div>
+</section>
 
 <!-- CTA -->
 
@@ -841,7 +627,7 @@
 
   /* Trượt nhẹ nội dung khi cuộn tới (bỏ qua nếu người dùng tắt chuyển động) */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    const targets = [...document.querySelectorAll('.cat-sec, .guide-title, section.block, .cta h2, .stay-card')];
+    const targets = [...document.querySelectorAll('.cat-sec, .guide-title, .cn-teaser')];
     targets.forEach(el => el.classList.add('reveal'));
     document.querySelectorAll('.stay-card').forEach((el, i) => el.style.transitionDelay = (i * 160) + 'ms');
     const io = new IntersectionObserver(entries => {

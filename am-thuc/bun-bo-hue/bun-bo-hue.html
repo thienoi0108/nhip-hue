@@ -21,16 +21,18 @@
   .eyebrow::before{content:'';width:22px;height:1px;background:var(--terracotta-deep);display:inline-block;}
   header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(246,241,232,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft);height:var(--header-h);display:flex;align-items:center;transform:translateY(0);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .3s;}
   header.nav-hidden{transform:translateY(-100%);}header.shadowed{box-shadow:0 2px 20px rgba(30,24,18,0.08);}
-  nav.wrap{width:100%;max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+  nav.wrap{width:100%;max-width:1460px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
   .logo-mark{font-family:'Fraunces',serif;font-size:29px;letter-spacing:0.14em;font-weight:500;display:flex;align-items:center;gap:14px;}
   .logo-mark img{width:68px;height:68px;}
-  .navlinks{display:flex;gap:42px;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;}
+  .logo-mark img.logo-text{width:auto;height:32px;margin-left:-9px;}
+
+  .navlinks{display:flex;gap:30px;font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;}
   .navlinks a{position:relative;padding:4px 0;opacity:0.82;transition:opacity .25s;}
   .navlinks a:hover,.navlinks a.active{opacity:1;}
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--terracotta);transition:width .3s;}
   .navlinks a:hover::after,.navlinks a.active::after{width:100%;}
   .nav-right{display:flex;align-items:center;gap:16px;}
-  .nav-cta{border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:8px 22px;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;transition:all .3s;white-space:nowrap;}
+  .nav-cta{border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:11px 26px;font-size:12.6px;letter-spacing:0.1em;text-transform:uppercase;transition:all .3s;white-space:nowrap;}
   .nav-cta:hover{background:var(--terracotta-deep);border-color:var(--terracotta-deep);}
   .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;cursor:pointer;background:none;border:none;padding:4px;}
   .hamburger span{display:block;width:100%;height:1px;background:var(--ink);transition:all .3s;}
@@ -184,9 +186,9 @@
   .foot-soc:hover{border-color:rgba(251,246,236,0.65);color:#FBF6EC;}
   .foot-soc svg{width:15px;height:15px;}
   .foot-bottom-line{padding:12px 0;font-size:12.5px;color:rgba(251,246,236,0.42);letter-spacing:0.03em;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 48px;}
+  .wrap{width:100%;max-width:1460px;margin:0 auto;padding:0 24px;}
   @media(max-width:980px){
-    .wrap{padding:0 26px;}nav.wrap{padding:0 26px;}
+    .wrap{padding:0 22px;}nav.wrap{padding:0 22px;}
     .navlinks{display:none;}.hamburger{display:flex;}.mobile-nav{display:flex;}
     .reader{flex-direction:column;margin-top:calc(var(--header-h) + var(--catnav-h));padding-left:0;}
     .article-cat-nav{width:100%;left:0;}
@@ -311,13 +313,14 @@
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="../../nhiphue-trangchu.html" class="logo-mark"><img src="../../logo/nhiphue-logo.png" alt="Nhịp Huế"></a>
+    <a href="../../nhiphue-trangchu.html" class="logo-mark"><img src="../../logo/nhiphue-logo.png" alt="Nhịp Huế"><img class="logo-text" src="../../logo/nhiphue-text.png" alt="Nhịp Huế"></a>
     <div class="navlinks">
       <a href="../../nhip-hue.html?cat=am-thuc" class="active">Ẩm thực</a>
       <a href="../../nhip-hue.html?cat=di-kham-pha">Đi <span class="amp">&amp;</span> Khám phá</a>
       <a href="../../nhip-hue.html?cat=nhip-song">Nhịp sống</a>
       <a href="../../nhip-hue.html?cat=van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</a>
       <a href="../../nhip-hue.html?cat=mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+      <a href="../../cam-nang.html">Cẩm nang</a>
     </div>
     <div class="nav-right">
       <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="nav-cta">Đặt phòng</a>
@@ -340,6 +343,7 @@
   <a href="../../nhip-hue.html?cat=nhip-song" class="mobile-link">Nhịp sống</a>
   <a href="../../nhip-hue.html?cat=van-hoa-di-san" class="mobile-link">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</a>
   <a href="../../nhip-hue.html?cat=mua-le-hoi" class="mobile-link">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+  <a href="../../cam-nang.html" class="mobile-link">Cẩm nang</a>
   <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="mobile-cta">Đặt phòng ngay</a>
 </div>
 

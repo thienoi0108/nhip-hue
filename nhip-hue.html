@@ -36,7 +36,7 @@
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
 
-  .wrap{max-width:1240px;margin:0 auto;padding:0 48px;}
+  .wrap{max-width:1460px;margin:0 auto;padding:0 24px;}
 
   .eyebrow{
     font-family:'Jost',sans-serif;
@@ -59,7 +59,7 @@
     letter-spacing:0.12em;
     text-transform:uppercase;
   }
-  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 48px;}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 24px;}
   .topbar .tb-right{display:flex;gap:24px;opacity:0.85;}
   .topbar a{color:inherit;transition:opacity .2s;}
   .topbar a:hover{opacity:1;}
@@ -79,7 +79,7 @@
   }
   nav.wrap{
     display:flex;align-items:center;justify-content:space-between;
-    padding:5px 48px;
+    padding:4px 24px;
   }
   .logo-mark{
     font-family:'Fraunces',serif;font-size:29px;
@@ -87,8 +87,10 @@
     display:flex;align-items:center;gap:14px;
   }
   .logo-mark img{width:68px;height:68px;}
+  .logo-mark img.logo-text{width:auto;height:32px;margin-left:-9px;}
+
   .navlinks{
-    display:flex;gap:42px;
+    display:flex;gap:30px;
     font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;
   }
   .navlinks a{
@@ -107,7 +109,7 @@
   .navlinks .cat-btn.active{opacity:1;}
   .nav-right{display:flex;align-items:center;gap:16px;}
   .nav-cta{
-    border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:12px 27px;
+    border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:11px 26px;
     font-size:12.6px;letter-spacing:0.1em;text-transform:uppercase;
     transition:all .3s;white-space:nowrap;
   }
@@ -429,7 +431,7 @@
   /* ===== RESPONSIVE ===== */
   @media(max-width:980px){
     .wrap{padding:0 26px;}
-    nav.wrap{padding:5px 26px;}
+    nav.wrap{padding:4px 22px;}
     .navlinks{display:none;}
     .hamburger{display:flex;}
     .mobile-nav{display:flex;}
@@ -454,7 +456,7 @@
   }
   @media(max-width:600px){
     .wrap{padding:0 20px;}
-    nav.wrap{padding:4px 20px;}
+    nav.wrap{padding:4px 22px;}
     .topbar .wrap{padding:9px 20px;}
     .logo-mark{font-size:21px;gap:10px;}
     .logo-mark img{width:68px;height:68px;}
@@ -493,23 +495,12 @@
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="wrap">
-    <div></div>
-    <div class="tb-right">
-      <a href="tel:+84908836663">+84 908 836 663</a>
-      <a href="mailto:contact@dainoi.com">contact@dainoi.com</a>
-    </div>
-  </div>
-</div>
-
 <!-- HEADER + CAT-BAR wrapper (fixed together) -->
 <div id="site-top">
 <header>
   <nav class="wrap">
     <a href="nhiphue-trangchu.html" class="logo-mark">
-      <img src="logo/nhiphue-logo.png" alt="Nhịp Huế">
+      <img src="logo/nhiphue-logo.png" alt="Nhịp Huế"><img class="logo-text" src="logo/nhiphue-text.png" alt="Nhịp Huế">
     </a>
     <div class="navlinks">
       <button class="cat-btn active" data-cat="am-thuc">Ẩm thực</button>
@@ -517,6 +508,7 @@
       <button class="cat-btn" data-cat="nhip-song">Nhịp sống</button>
       <button class="cat-btn" data-cat="van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</button>
       <button class="cat-btn" data-cat="mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</button>
+      <a href="cam-nang.html" style="align-self:center;">Cẩm nang</a>
     </div>
     <div class="nav-right">
       <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="nav-cta">Đặt phòng</a>
@@ -533,6 +525,7 @@
   <a href="#" class="mobile-link" data-cat="nhip-song">Nhịp sống</a>
   <a href="#" class="mobile-link" data-cat="van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di sản</a>
   <a href="#" class="mobile-link" data-cat="mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+  <a href="cam-nang.html" class="mobile-link">Cẩm nang</a>
   <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="mobile-cta">Đặt phòng ngay</a>
 </div>
 

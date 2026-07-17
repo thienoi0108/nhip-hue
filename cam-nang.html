@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cẩm Nang Đi Huế — Dành Cho Người Lần Đầu · Nhịp Huế</title>
+<meta name="description" content="Cẩm nang đi Huế dạng ứng dụng bỏ túi — chạm để xem chi tiết từng mục.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap');
+:root{--cream:#F6F1E8;--cream-2:#EFE7D8;--ink:#1E1812;--ink-soft:#3A3128;
+ --terracotta:#53295B;--terracotta-deep:#3B1C42;--brass:#AC8A52;
+ --line:rgba(30,24,18,0.14);--line-soft:rgba(30,24,18,0.08);--paper:#FBF8F2;--header-h:76px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:400;letter-spacing:0.01em;}
+a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}
+.amp{font-family:Georgia,'Times New Roman',serif;font-size:0.8em;font-weight:400;}
+
+/* ══ HEADER (chuẩn site) ══ */
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(246,241,232,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft);height:var(--header-h);display:flex;align-items:center;}
+nav.topnav{width:100%;max-width:1460px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.logo-mark{display:flex;align-items:center;gap:14px;}
+.logo-mark img{width:68px;height:68px;}
+.logo-mark img.logo-text{width:auto;height:32px;margin-left:-9px;}
+.navlinks{display:flex;gap:30px;font-size:13.7px;letter-spacing:0.06em;text-transform:uppercase;}
+.navlinks a{position:relative;padding:4px 0;opacity:0.82;transition:opacity .25s;}
+.navlinks a:hover,.navlinks a.active{opacity:1;}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--terracotta);transition:width .3s;}
+.navlinks a:hover::after,.navlinks a.active::after{width:100%;}
+.nav-cta{border:1px solid var(--terracotta);background:var(--terracotta);color:#FBF6EC;padding:11px 26px;font-size:12.6px;letter-spacing:0.1em;text-transform:uppercase;transition:all .3s;white-space:nowrap;}
+.nav-cta:hover{background:var(--terracotta-deep);}
+@media(max-width:980px){.navlinks,.nav-cta{display:none;}}
+
+/* ══ APP LAYOUT ══ */
+.app{max-width:1100px;margin:0 auto;padding:calc(var(--header-h) + 22px) 18px 40px;}
+.app-hero{text-align:center;margin-bottom:22px;}
+.app-hero h1{font-size:clamp(26px,4vw,38px);}
+.app-hero h1 em{font-style:italic;font-weight:300;color:var(--terracotta);}
+.app-hero p{margin-top:6px;font-size:14px;color:var(--ink-soft);opacity:0.8;}
+
+.eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--terracotta-deep);font-weight:500;display:inline-flex;align-items:center;gap:12px;}
+.eyebrow::before,.eyebrow::after{content:'';width:22px;height:1px;background:var(--brass);display:inline-block;}
+.sep{display:flex;justify-content:center;padding:14px 0 0;}
+.sep::before{content:'';width:min(300px,55%);height:1px;border-radius:1px;background:radial-gradient(ellipse at center,var(--terracotta) 0%,rgba(83,41,91,0.75) 38%,transparent 74%);}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);grid-template-areas:"h48 h48 mua mua" "h48 h48 an odau" "dilai ve faq meo";gap:16px;}
+.ac{position:relative;border:none;border-radius:16px;overflow:hidden;cursor:pointer;font-family:inherit;text-align:left;background:var(--paper);transition:transform .3s,box-shadow .3s;padding:0;}
+.ac:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(30,24,18,0.13);}
+.ac .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.ac:hover .bg{transform:scale(1.045);}
+.ac .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,25,0.02) 30%,rgba(20,10,25,0.87));}
+.big,.wide,.imgc{background:linear-gradient(160deg,#53295B,#2A1530);}
+.frame{position:absolute;inset:9px;border:1px solid rgba(231,207,169,0.38);border-radius:10px;pointer-events:none;z-index:3;}
+.ac .ct{position:absolute;left:0;right:0;bottom:0;z-index:2;display:block;padding:18px 20px 16px;color:#FBF6EC;}
+.ac .ct i{display:block;font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:#E7CFA9;margin-bottom:5px;}
+.ac .ct h3{font-size:19px;font-weight:400;line-height:1.3;}
+.big{min-height:360px;}
+.big .ct h3{font-size:clamp(23px,2.4vw,31px);}
+.big .ct{padding:22px 24px 20px;}
+.wide{min-height:170px;}
+.imgc{min-height:170px;}
+.kf{display:block;margin-top:7px;font-size:13.5px;line-height:1.6;color:rgba(251,246,236,0.72);max-width:420px;}
+.go{display:inline-block;margin-top:12px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#E7CFA9;border-bottom:1px solid rgba(231,207,169,0.5);padding-bottom:3px;}
+
+.ac.txt{border:1px solid var(--line-soft);padding:16px 17px;display:flex;flex-direction:column;min-height:185px;}
+.gate{width:40px;height:48px;border:1.2px solid var(--terracotta);border-radius:20px 20px 4px 4px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;background:var(--cream);flex-shrink:0;}
+.ac.txt i{font-family:'Fraunces',serif;font-style:italic;font-size:12px;color:var(--brass);margin-bottom:3px;display:block;}
+.ac.txt h3{font-size:17.5px;color:var(--ink);font-weight:400;}
+.kf2{font-size:12.5px;color:var(--ink-soft);opacity:0.85;margin-top:4px;line-height:1.55;}
+.go2{margin-top:auto;padding-top:12px;font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);font-weight:500;}
+.ac.inv{background:linear-gradient(160deg,var(--terracotta),#3B1C42);border:none;}
+.ac.inv h3{color:#FBF6EC;}
+.ac.inv i{color:#E7CFA9;}
+.ac.inv .kf2{color:rgba(251,246,236,0.72);}
+.ac.inv .go2{color:#E7CFA9;}
+.ac.inv .gate{border-color:rgba(231,207,169,0.65);background:transparent;}
+
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr 1fr;gap:11px;grid-template-areas:"h48 h48" "mua mua" "an odau" "dilai ve" "faq meo";}
+  .big{min-height:250px;}
+  .wide,.imgc{min-height:145px;}
+  .ac .ct{padding:13px 14px 12px;}
+  .ac .ct h3{font-size:16px;}
+  .big .ct h3{font-size:21px;}
+  .kf{font-size:12px;margin-top:5px;}
+  .ac.txt{min-height:0;padding:13px 14px;}
+  .gate{width:34px;height:41px;font-size:14px;margin-bottom:9px;}
+  .ac.txt h3{font-size:15.5px;}
+  .frame{inset:7px;}
+}
+
+/* ══ BOTTOM SHEET ══ */
+.ov{position:fixed;inset:0;background:rgba(20,10,25,0.45);backdrop-filter:blur(2px);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;}
+.ov.on{opacity:1;pointer-events:auto;}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:310;background:var(--cream);border-radius:20px 20px 0 0;max-height:88vh;transform:translateY(105%);transition:transform .38s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;max-width:720px;margin:0 auto;box-shadow:0 -10px 40px rgba(20,10,25,0.25);}
+.sheet.on{transform:translateY(0);}
+.grip{width:44px;height:4px;border-radius:99px;background:rgba(30,24,18,0.2);margin:10px auto 2px;flex-shrink:0;}
+.sh-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 18px 12px;border-bottom:1px solid var(--line-soft);flex-shrink:0;}
+.sh-head h3{font-size:20px;}
+.sh-head .x{border:none;background:rgba(30,24,18,0.07);width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;color:var(--ink-soft);flex-shrink:0;}
+.sh-body{overflow-y:auto;padding:16px 18px 26px;-webkit-overflow-scrolling:touch;}
+.sh-body::-webkit-scrollbar{width:0;}
+
+/* nội dung trong sheet */
+.b-card{background:var(--paper);border:1px solid var(--line-soft);border-radius:12px;padding:13px 14px;margin-bottom:10px;}
+.b-card h4{font-size:15.5px;margin-bottom:4px;color:var(--terracotta-deep);}
+.b-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.65;}
+.tag{display:inline-block;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);border:1px solid rgba(83,41,91,0.45);border-radius:99px;padding:2px 9px;margin-bottom:7px;font-weight:500;}
+.tag.best{background:var(--terracotta);color:#FBF6EC;border-color:var(--terracotta);}
+.pr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(83,41,91,0.3);font-size:12.5px;color:var(--terracotta-deep);}
+.stay{border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;background:var(--paper);margin-bottom:12px;}
+.stay img{width:100%;height:0;min-height:150px;object-fit:cover;height:auto;max-height:190px;}
+.stay .si{padding:11px 14px;}
+.stay .sr{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.stay h4{font-size:16px;}
+.stay p{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+.bk{background:var(--terracotta);color:#FBF6EC;border-radius:8px;padding:8px 14px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
+.bk.dis{background:rgba(83,41,91,0.35);}
+.slot{display:flex;gap:11px;background:var(--paper);border:1px solid var(--line-soft);border-radius:12px;padding:11px 13px;margin-bottom:8px;}
+.slot input{width:20px;height:20px;accent-color:var(--terracotta);flex-shrink:0;margin-top:2px;}
+.slot .tm{font-size:10px;letter-spacing:0.12em;color:var(--brass);text-transform:uppercase;font-weight:600;}
+.slot h5{font-size:14.5px;margin:2px 0;}
+.slot p{font-size:12.5px;color:var(--ink-soft);}
+.slot.done{opacity:0.45;}
+.slot.done h5{text-decoration:line-through;}
+.dayh{font-family:'Fraunces',serif;font-size:16px;color:var(--terracotta-deep);margin:14px 0 8px;}
+.dayh span{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;background:var(--terracotta);color:#FBF6EC;padding:3px 9px;border-radius:99px;margin-right:7px;}
+.food{display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:var(--paper);border:1px solid var(--line-soft);border-radius:10px;padding:9px 13px;margin-bottom:7px;}
+.food b{font-family:'Fraunces',serif;font-weight:400;font-size:14px;display:block;}
+.food small{font-size:11px;color:var(--ink-soft);opacity:0.85;}
+.food .p{color:var(--terracotta-deep);font-weight:500;font-size:12.5px;white-space:nowrap;}
+.food-link{color:var(--terracotta-deep);border-bottom:1px solid rgba(83,41,91,0.4);}
+details{background:var(--paper);border:1px solid var(--line-soft);border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+details summary{font-family:'Fraunces',serif;font-size:14.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px;}
+details summary::-webkit-details-marker{display:none;}
+details summary::after{content:'+';color:var(--terracotta);font-size:17px;flex-shrink:0;}
+details[open] summary::after{content:'–';}
+details p{margin-top:7px;font-size:13px;color:var(--ink-soft);}
+.tipn{border-left:3px solid var(--brass);background:var(--paper);border-radius:9px;padding:10px 13px;margin-bottom:8px;font-size:13px;color:var(--ink-soft);}
+.tipn b{color:var(--ink);font-weight:500;}
+.nt{font-size:12px;font-style:italic;color:var(--ink-soft);opacity:0.75;margin:4px 0 12px;}
+
+/* ══ FOOTER (chuẩn site) ══ */
+footer{background:#4B3454;color:rgba(251,246,236,0.78);padding:20px 0 0;text-align:center;font-size:13px;margin-top:30px;}
+.foot-grid{display:flex;justify-content:center;padding-bottom:14px;border-bottom:1px solid rgba(251,246,236,0.12);}
+.foot-brand{display:flex;flex-direction:column;align-items:center;}
+.foot-brand .logo-mark img{width:75px;height:75px;}
+.foot-bottom{padding:12px 0;font-size:12.5px;color:rgba(251,246,236,0.42);letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="topnav">
+    <a href="nhiphue-trangchu.html" class="logo-mark"><img src="logo/nhiphue-logo.png" alt="Nhịp Huế"><img class="logo-text" src="logo/nhiphue-text.png" alt="Nhịp Huế"></a>
+    <div class="navlinks">
+      <a href="nhip-hue.html?cat=am-thuc">Ẩm thực</a>
+      <a href="nhip-hue.html?cat=di-kham-pha">Đi <span class="amp">&amp;</span> Khám phá</a>
+      <a href="nhip-hue.html?cat=nhip-song">Nhịp sống</a>
+      <a href="nhip-hue.html?cat=van-hoa-di-san">Văn hoá <span class="amp">&amp;</span> Di&nbsp;sản</a>
+      <a href="nhip-hue.html?cat=mua-le-hoi">Mùa <span class="amp">&amp;</span> Lễ hội</a>
+      <a href="cam-nang.html" class="active">Cẩm nang</a>
+    </div>
+    <a href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener" class="nav-cta">Đặt phòng</a>
+  </nav>
+</header>
+
+<div class="app">
+  <div class="app-hero">
+    <span class="eyebrow">Nhịp Huế · Cẩm nang bỏ túi</span>
+    <h1>Lần đầu <em>đến Huế?</em></h1>
+    <p>Chạm vào từng ô để mở chi tiết — từ người sống trong lòng Kinh Thành.</p>
+    <div class="sep"></div>
+  </div>
+
+  <div class="cards">
+    <button class="ac big" data-sh="sh-48h" style="grid-area:h48">
+      <img class="bg" src="di-kham-pha/pha-tam-giang/Ảnh/cover.jpg" alt="Phá Tam Giang" loading="lazy" onerror="this.remove()">
+      <span class="shade"></span><span class="frame"></span>
+      <span class="ct"><i>hai ngày · chín chặng</i><h3>48 giờ đầu tiên ở Huế</h3><span class="kf">Từ tô bún bò 5 giờ sáng đến hoàng hôn Phá Tam Giang — có checklist đánh dấu chặng.</span><span class="go">Mở lịch trình</span></span>
+    </button>
+    <button class="ac wide" data-sh="sh-mua" style="grid-area:mua">
+      <img class="bg" src="mua-le-hoi/mua-hue-thang-10/Ảnh/cover.jpg" alt="Mưa Huế" loading="lazy" onerror="this.remove()">
+      <span class="shade"></span><span class="frame"></span>
+      <span class="ct"><i>tháng 1 – 4 đẹp nhất</i><h3>Đi tháng nào?</h3><span class="go">Xem bốn mùa</span></span>
+    </button>
+    <button class="ac imgc" data-sh="sh-an" style="grid-area:an">
+      <img class="bg" src="am-thuc/bun-bo-hue/Ảnh/cover.jpg" alt="Bún bò Huế" loading="lazy" onerror="this.remove()">
+      <span class="shade"></span><span class="frame"></span>
+      <span class="ct"><i>15 món · 3k – 80k</i><h3>Ăn gì — giá?</h3></span>
+    </button>
+    <button class="ac imgc" data-sh="sh-odau" style="grid-area:odau">
+      <img class="bg" src="images/dai-noi.jpg" alt="Ở đâu khi đến Huế" loading="lazy" onerror="this.remove()">
+      <span class="shade"></span><span class="frame"></span>
+      <span class="ct"><i>ba chỗ ở</i><h3>Ở đâu?</h3></span>
+    </button>
+    <button class="ac txt" data-sh="sh-dilai" style="grid-area:dilai">
+      <span class="gate">🛵</span><i>trung tâm gói trong 5 km</i><h3>Đi lại</h3><span class="kf2">Xe máy 150k/24h · xích lô · đi bộ</span><span class="go2">Chi tiết</span>
+    </button>
+    <button class="ac txt" data-sh="sh-ve" style="grid-area:ve">
+      <span class="gate">🎫</span><i>Đại Nội ~200k</i><h3>Vé tham quan</h3><span class="kf2">4 điểm có vé · nhiều nơi miễn phí</span><span class="go2">Chi tiết</span>
+    </button>
+    <button class="ac txt" data-sh="sh-faq" style="grid-area:faq">
+      <span class="gate">💬</span><i>đáp gọn</i><h3>Hỏi nhanh</h3><span class="kf2">5 câu khách hay hỏi lễ tân nhất</span><span class="go2">Chi tiết</span>
+    </button>
+    <button class="ac txt inv" data-sh="sh-meo" style="grid-area:meo">
+      <span class="gate">✨</span><i>không nằm trong guidebook</i><h3>Mẹo địa phương</h3><span class="kf2">6 mẹo từ người Huế</span><span class="go2">Chi tiết</span>
+    </button>
+  </div>
+</div>
+
+<div class="ov" id="ov"></div>
+
+<!-- ══ SHEETS ══ -->
+<div class="sheet" id="sh-mua"><div class="grip"></div>
+  <div class="sh-head"><h3>Nên đi Huế tháng nào?</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Huế có hai mùa rõ: khô và mưa. Không có mùa nào "sai" — chỉ cần biết trước mình sẽ gặp gì.</p>
+    <div class="b-card"><span class="tag best">Tháng 1–4 · Đẹp nhất</span><p>Trời mát 20–28°C, ít mưa, cây xanh sau mùa nước. Tết ở Huế trầm và đẹp. Dễ chịu nhất để đi bộ, đạp xe quanh Kinh Thành.</p></div>
+    <div class="b-card"><span class="tag">Tháng 5–8 · Nắng, lễ hội</span><p>Nắng gắt, có ngày 38–40°C. Bù lại là mùa Festival Huế và sen nở hồ Tịnh Tâm. Đi sớm về trưa, chiều muộn hãy ra đường.</p></div>
+    <div class="b-card"><span class="tag">Tháng 9–12 · Mùa mưa</span><p>Mưa dầm, có khi 3–4 ngày liền, đỉnh điểm tháng 10–11. Nhưng Huế trong mưa có màu riêng — rêu đậm hơn, thành quách trầm hơn. Mang áo mưa, đừng mang kỳ vọng nắng.</p></div>
+    <div class="b-card"><span class="tag">Mẹo chọn ngày · Từ người Huế</span><p>Mưa Huế mà kéo dài qua trưa là mưa cả ngày — hôm đó dành cho bảo tàng, cà phê và ăn. Nắng lên thì ưu tiên lăng tẩm ngay, đừng để dành.</p></div>
+  </div>
+</div>
+
+<div class="sheet" id="sh-odau"><div class="grip"></div>
+  <div class="sh-head"><h3>Ở đâu khi đến Huế?</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Ba chỗ ở cùng hệ thống — chọn theo nhịp chuyến đi của bạn.</p>
+    <div class="stay"><img src="images/dai-noi.jpg" alt="Dainoi Homestay" loading="lazy"><div class="si"><div class="sr"><h4>Dainoi Homestay</h4><a class="bk" href="https://bookhotel.kiotviet.vn/dainoi" target="_blank" rel="noopener">Đặt phòng</a></div><p>63 Ông Ích Khiêm · cách Đại Nội 5 phút đi bộ</p></div></div>
+    <div class="stay"><img src="images/zen-apartment.jpg" alt="Zen Apartment" loading="lazy"><div class="si"><div class="sr"><h4>Zen Apartment</h4><span class="bk dis">Sắp có link</span></div><p>Nera Garden · gần Aeon Mall Huế</p></div></div>
+    <div class="stay"><img src="images/hue-heritage.jpg" alt="Hue Heritage" loading="lazy"><div class="si"><div class="sr"><h4>Hue Heritage</h4><span class="bk dis">Sắp có link</span></div><p>Chung cư cao cấp · cạnh Melia Vinpearl Huế</p></div></div>
+  </div>
+</div>
+
+<div class="sheet" id="sh-dilai"><div class="grip"></div>
+  <div class="sh-head"><h3>Đi lại trong Huế</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Huế nhỏ và phẳng — trung tâm gói gọn trong bán kính 5 km. Đây là lợi thế lớn nhất của nó.</p>
+    <div class="b-card"><h4>🛵 Xe máy — nên nhất</h4><p>Tự do nhất để ra Phá Tam Giang, lăng Tự Đức, làng hoa giấy Thanh Tiên. Thuê ngay tại Dainoi Homestay, lễ tân giao xe tận nơi và chỉ luôn đường ít người đi.</p><span class="pr">150.000đ / 24 tiếng · đổ đầy bình ~50k</span></div>
+    <div class="b-card"><h4>🚶 Đi bộ trong Kinh Thành</h4><p>Dainoi ở 63 Ông Ích Khiêm — ngay trong Kinh Thành. Đại Nội, hào thành, hàng quán buổi sáng đều trong tầm 10–20 phút đi bộ. Sáng sớm là khung giờ đẹp nhất.</p><span class="pr">0 đồng — và đáng giá nhất</span></div>
+    <div class="b-card"><h4>🛺 Taxi / Xích lô</h4><p>Taxi và xe công nghệ đầy đủ, phù hợp buổi tối hoặc trời mưa. Xích lô quanh Kinh Thành là trải nghiệm chậm rãi đúng chất Huế — thỏa thuận giá trước khi lên.</p><span class="pr">Xích lô ~100–150k/giờ</span></div>
+  </div>
+</div>
+
+<div class="sheet" id="sh-48h"><div class="grip"></div>
+  <div class="sh-head"><h3>48 giờ đầu tiên ở Huế</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt" id="prog48">Đi tới đâu, đánh dấu tới đó — máy sẽ nhớ giúp bạn.</p>
+    <div class="dayh"><span>Ngày 1</span>Trong lòng Kinh Thành</div>
+    <div class="slot" data-k="a"><input type="checkbox"><div><div class="tm">05:30 – 07:00</div><h5>Bún bò buổi sáng</h5><p>Ra đường lúc Huế chưa thức hẳn, tìm quán có khói.</p></div></div>
+    <div class="slot" data-k="b"><input type="checkbox"><div><div class="tm">07:30 – 11:00</div><h5>Đại Nội — Hoàng Thành</h5><p>Vào cổng sớm tránh nắng và đoàn khách. Dành ít nhất 3 giờ, đi chậm.</p></div></div>
+    <div class="slot" data-k="c"><input type="checkbox"><div><div class="tm">11:30 – 13:30</div><h5>Cơm trưa kiểu Huế + nghỉ</h5><p>Một mâm cơm nhỏ đúng vị, rồi về Dainoi tránh nắng.</p></div></div>
+    <div class="slot" data-k="d"><input type="checkbox"><div><div class="tm">15:00 – 17:30</div><h5>Đi bộ dọc hào thành + chè chiều</h5><p>Hào thành lúc nắng xiên là đẹp nhất, kết thúc bằng ly chè.</p></div></div>
+    <div class="slot" data-k="e"><input type="checkbox"><div><div class="tm">18:30 – 21:00</div><h5>Bánh Huế + dạo bờ sông Hương</h5><p>Bèo nậm lọc bữa tối nhẹ, rồi qua cầu Trường Tiền lúc lên đèn.</p></div></div>
+    <div class="dayh"><span>Ngày 2</span>Ra khỏi thành</div>
+    <div class="slot" data-k="f"><input type="checkbox"><div><div class="tm">05:30 – 07:30</div><h5>Chợ Đông Ba trước giờ khách du lịch</h5><p>Đi chợ như người Huế — trước 6 giờ rưỡi. Ăn sáng ngay trong chợ.</p></div></div>
+    <div class="slot" data-k="g"><input type="checkbox"><div><div class="tm">08:30 – 11:30</div><h5>Lăng Tự Đức</h5><p>Lăng "nên đi nhất nếu chỉ đi một lăng" — kiến trúc nằm giữa rừng thông.</p></div></div>
+    <div class="slot" data-k="h"><input type="checkbox"><div><div class="tm">14:30 – 18:30</div><h5>Phá Tam Giang — hoàng hôn</h5><p>Chạy xe máy 12–15 km ra đầm phá lớn nhất Đông Nam Á. Không vé, không cổng.</p></div></div>
+    <div class="slot" data-k="i"><input type="checkbox"><div><div class="tm">19:30 – 21:30</div><h5>Tối cuối: ăn lại món ưng nhất</h5><p>Quay lại quán bạn thích nhất hai ngày qua — "ăn cho nhớ".</p></div></div>
+  </div>
+</div>
+
+<div class="sheet" id="sh-an"><div class="grip"></div>
+  <div class="sh-head"><h3>Ăn gì — giá bao nhiêu?</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Giá thường thấy — để bạn khỏi bị "giá khách du lịch".</p>
+    <div class="food"><div><b><a href="am-thuc/bun-bo-hue/bun-bo-hue.html" target="_blank" rel="noopener" class="food-link">Bún bò Huế</a></b><small>Sáng sớm, trước 9h</small></div><div class="p">30 – 45k</div></div>
+    <div class="food"><div><b>Cơm hến / bún hến</b><small>Sáng, trưa</small></div><div class="p">15 – 25k</div></div>
+    <div class="food"><div><b>Bánh mì Huế</b><small>Sáng, khuya</small></div><div class="p">15 – 25k</div></div>
+    <div class="food"><div><b>Bún mắm nêm</b><small>Trưa</small></div><div class="p">20 – 30k</div></div>
+    <div class="food"><div><b>Cơm âm phủ</b><small>Trưa, tối</small></div><div class="p">35 – 55k</div></div>
+    <div class="food"><div><b>Cơm chay Huế</b><small>Trưa, ngày rằm</small></div><div class="p">20 – 40k</div></div>
+    <div class="food"><div><b>Bún thịt nướng / bánh ướt</b><small>Trưa, chiều</small></div><div class="p">25 – 35k</div></div>
+    <div class="food"><div><b>Chè Huế (1 chén)</b><small>Xế chiều</small></div><div class="p">10 – 20k</div></div>
+    <div class="food"><div><b>Bánh ép</b><small>Xế chiều</small></div><div class="p">3 – 5k/cái</div></div>
+    <div class="food"><div><b>Bánh canh</b><small>Chiều mưa</small></div><div class="p">20 – 35k</div></div>
+    <div class="food"><div><b>Bánh bèo – nậm – lọc</b><small>Chiều, tối nhẹ</small></div><div class="p">25 – 40k</div></div>
+    <div class="food"><div><b>Bánh khoái</b><small>Chiều, tối</small></div><div class="p">30 – 50k</div></div>
+    <div class="food"><div><b>Nem lụi (phần)</b><small>Tối</small></div><div class="p">35 – 60k</div></div>
+    <div class="food"><div><b>Cà phê quán cũ</b><small>Cả ngày</small></div><div class="p">15 – 30k</div></div>
+    <div class="food"><div><b>Mè xửng, tôm chua (quà)</b><small>Chợ Đông Ba buổi sáng</small></div><div class="p">30 – 80k</div></div>
+    <p class="nt">Quán trong hẻm, bàn thấp, không bảng hiệu thường ngon và đúng giá hơn quán mặt tiền phố du lịch.</p>
+  </div>
+</div>
+
+<div class="sheet" id="sh-ve"><div class="grip"></div>
+  <div class="sh-head"><h3>Vé tham quan</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Giá tham khảo cho khách Việt (người lớn) — kiểm tra lại tại cổng trước khi đi.</p>
+    <div class="food"><div><b>Đại Nội (Hoàng Thành)</b><small>6:30/7:00–17:30 · nên dành 3–4 giờ</small></div><div class="p">~200k</div></div>
+    <div class="food"><div><b>Lăng Tự Đức</b><small>7:00–17:30 · nên dành 1.5–2 giờ</small></div><div class="p">~150k</div></div>
+    <div class="food"><div><b>Lăng Khải Định</b><small>7:00–17:30 · nên dành 1 giờ</small></div><div class="p">~150k</div></div>
+    <div class="food"><div><b>Lăng Minh Mạng</b><small>7:00–17:30 · nên dành 1.5–2 giờ</small></div><div class="p">~150k</div></div>
+    <div class="food"><div><b>Vé gộp Đại Nội + 3 lăng</b><small>hỏi tại quầy vé</small></div><div class="p">rẻ hơn lẻ</div></div>
+    <div class="food"><div><b>Phá Tam Giang, hào thành, chợ Đông Ba, chùa Thiên Mụ</b><small>tùy bạn</small></div><div class="p">Miễn phí</div></div>
+  </div>
+</div>
+
+<div class="sheet" id="sh-faq"><div class="grip"></div>
+  <div class="sh-head"><h3>Hỏi nhanh — đáp gọn</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Những câu khách ở Dainoi hay hỏi lễ tân nhất.</p>
+    <details><summary>Vào Đại Nội, lăng, chùa nên mặc gì?</summary><p>Kín vai và quá gối là được — đây là không gian thờ tự và di tích. Trời nắng nên đem nón, nước; sân gạch Đại Nội rất rộng và không có nhiều bóng râm.</p></details>
+    <details><summary>Trời mưa cả ngày thì làm gì?</summary><p>Đừng cố "chạy lịch". Mưa Huế là một phần của Huế: tìm quán cà phê cũ, ăn bánh canh nóng trong hẻm, hoặc mặc áo mưa đi bộ dọc hào thành — không khách du lịch, chỉ có mưa và mình.</p></details>
+    <details><summary>Đổi tiền, rút tiền có dễ không?</summary><p>ATM các ngân hàng lớn có khắp trung tâm và quanh chợ Đông Ba. Nhiều quán nhỏ chỉ nhận tiền mặt hoặc chuyển khoản — nên giữ sẵn tiền lẻ 10–50k để ăn hàng.</p></details>
+    <details><summary>Huế có an toàn khi ra đường buổi tối?</summary><p>Huế thuộc nhóm thành phố yên bình nhất để đi bộ buổi tối. Bờ sông Hương, cầu Trường Tiền, phố đi bộ đông vui đến khoảng 22h — sau đó cả thành phố đi ngủ khá sớm.</p></details>
+    <details><summary>Đi Huế mấy ngày là đủ?</summary><p>2 ngày là đủ cho lần đầu. Nhưng người ở 3–4 ngày thường là người "hiểu" Huế nhất: có thời gian cho một buổi sáng không kế hoạch — và đó thường là buổi đáng nhớ nhất.</p></details>
+  </div>
+</div>
+
+<div class="sheet" id="sh-meo"><div class="grip"></div>
+  <div class="sh-head"><h3>Mẹo nhỏ từ người địa phương</h3><button class="x">✕</button></div>
+  <div class="sh-body">
+    <p class="nt">Những thứ không nằm trong guidebook.</p>
+    <div class="tipn"><b>Dậy sớm có thưởng.</b> Món ngon nhất của Huế bán buổi sáng và hết trước 9 giờ. Ngủ nướng ở Huế là có giá của nó.</div>
+    <div class="tipn"><b>Nhìn ghế mà chọn quán.</b> Quán không bảng hiệu mà đông người địa phương ngồi ghế thấp — cứ vào, không cần hỏi trước.</div>
+    <div class="tipn"><b>Học 3 từ.</b> "Rứa" là vậy, "mô" là đâu, "răng" là sao. Biết 3 từ này, bạn được cười với nhiều hơn.</div>
+    <div class="tipn"><b>Giờ vàng 5–6 giờ chiều.</b> Hào thành, sông Hương, Phá Tam Giang đều đẹp nhất lúc này.</div>
+    <div class="tipn"><b>Mua quà buổi sáng.</b> Mè xửng, tôm chua, mắm ruốc ở chợ Đông Ba — hỏi giá trước, mua ở sạp có người Huế đang mua.</div>
+    <div class="tipn"><b>Bí quá thì hỏi lễ tân Dainoi.</b> Người Huế chỉ đường kèm luôn quán ăn dọc đường.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo-mark"><img src="logo/nhiphue-logo.png" alt="Nhịp Huế"></div>
+    </div>
+  </div>
+  <div class="foot-bottom">Bản quyền © 2026, nhiphue.com</div>
+</footer>
+
+<script>
+const ov = document.getElementById('ov');
+let cur = null;
+const open = id => {
+  cur = document.getElementById(id);
+  cur.classList.add('on'); ov.classList.add('on');
+  document.body.style.overflow = 'hidden';
+};
+const close = () => {
+  if (cur) cur.classList.remove('on');
+  ov.classList.remove('on');
+  document.body.style.overflow = '';
+  cur = null;
+};
+document.querySelectorAll('.ac').forEach(c => c.addEventListener('click', () => open(c.dataset.sh)));
+document.querySelectorAll('.sheet .x').forEach(x => x.addEventListener('click', close));
+ov.addEventListener('click', close);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+/* Vuốt xuống để đóng (mobile) */
+document.querySelectorAll('.sheet').forEach(sh => {
+  let y0 = null;
+  sh.addEventListener('touchstart', e => {
+    if (sh.querySelector('.sh-body').scrollTop <= 0) y0 = e.touches[0].clientY;
+  }, {passive:true});
+  sh.addEventListener('touchmove', e => {
+    if (y0 !== null && e.touches[0].clientY - y0 > 70) { y0 = null; close(); }
+  }, {passive:true});
+  sh.addEventListener('touchend', () => y0 = null);
+});
+
+/* Checklist 48h — nhớ bằng localStorage */
+const saved = JSON.parse(localStorage.getItem('nh48h-app') || '{}');
+const slots = document.querySelectorAll('.slot');
+const sync = () => {
+  let done = 0;
+  slots.forEach(s => {
+    const c = s.querySelector('input');
+    s.classList.toggle('done', c.checked);
+    if (c.checked) done++;
+  });
+  document.getElementById('prog48').textContent = done === 0
+    ? 'Đi tới đâu, đánh dấu tới đó — máy sẽ nhớ giúp bạn.'
+    : (done === slots.length ? '🎉 Đi hết 48 giờ Huế rồi — "ăn cho nhớ" thôi!' : `Đã đi ${done}/${slots.length} chặng.`);
+};
+slots.forEach(s => {
+  const c = s.querySelector('input');
+  c.checked = !!saved[s.dataset.k];
+  c.addEventListener('change', () => {
+    saved[s.dataset.k] = c.checked;
+    localStorage.setItem('nh48h-app', JSON.stringify(saved));
+    sync();
+  });
+});
+sync();
+</script>
+</body>
+</html>
